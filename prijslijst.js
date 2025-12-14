@@ -8,17 +8,19 @@ function tSafe(key) {
 
 // Parse CSV data
 function parseCSV(csvText) {
-    const lines = csvText.trim().split('\n');
+    const lines = csvText.trim().split('\n').filter(line => line.trim()); // Skip empty lines
     const headers = lines[0].split(',');
     const data = [];
     
     for (let i = 1; i < lines.length; i++) {
-        const line = lines[i];
+        const line = lines[i].trim();
+        if (!line) continue; // Skip empty lines
+        
         const values = line.split(',');
         const row = {};
         
         headers.forEach((header, index) => {
-            row[header] = values[index];
+            row[header] = values[index] ? values[index].trim() : '';
         });
         
         data.push(row);
@@ -172,7 +174,8 @@ function downloadPriceList() {
     
     html += `
             <p style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
-                Be Beauty | info@bebeauty.com | +31 6 12345678
+                Be Beauty | info@bebeauty.com | +31 6 12345678<br>
+                <em style="font-size: 12px;">Note: Update contact information before deployment</em>
             </p>
         </body>
         </html>

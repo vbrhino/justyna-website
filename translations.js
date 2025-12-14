@@ -205,7 +205,9 @@ let currentLang = localStorage.getItem('preferredLanguage') || 'nl';
 
 // Translate function
 function t(key) {
-    return translations[currentLang][key] || key;
+    // Fallback to default language if current language not found
+    const lang = translations[currentLang] ? currentLang : 'nl';
+    return translations[lang][key] || key;
 }
 
 // Change language

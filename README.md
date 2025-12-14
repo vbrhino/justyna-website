@@ -96,6 +96,17 @@ De prijslijst wordt dynamisch geladen vanuit CSV bestanden. Om prijzen te update
 
 ## Aanpassen
 
+### Contact Informatie
+
+**Belangrijk:** Update de volgende placeholder contact informatie voor deployment:
+- E-mail: `info@bebeauty.com` 
+- Telefoon: `+31 6 12345678`
+- Adres: `Smuga, Nederland`
+
+Deze informatie moet worden aangepast in:
+- `contact.html` (Contact pagina)
+- `prijslijst.js` (Downloadbare prijslijst footer)
+
 ### Kleuren
 
 Alle kleuren zijn gedefinieerd als CSS variabelen in `styles.css`. Je kunt het kleurenschema makkelijk aanpassen door de `:root` sectie te wijzigen:
