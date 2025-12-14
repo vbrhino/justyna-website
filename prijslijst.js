@@ -29,21 +29,34 @@ function parseCSV(csvText) {
     return data;
 }
 
-// Group data by category
-function groupByCategory(data) {
+// Group data by category and subcategory
+function groupHierarchically(data) {
     const grouped = {};
     
     data.forEach(item => {
         const category = item.CategoryKey;
+        const subcategory = item.SubcategoryKey;
+        
         // Skip items with missing CategoryKey
         if (!category || category.trim() === '') {
             console.warn('Skipping item with missing CategoryKey:', item);
             return;
         }
+        
         if (!grouped[category]) {
-            grouped[category] = [];
+            grouped[category] = {};
         }
-        grouped[category].push(item);
+        
+        if (!subcategory || subcategory.trim() === '') {
+            console.warn('Skipping item with missing SubcategoryKey:', item);
+            return;
+        }
+        
+        if (!grouped[category][subcategory]) {
+            grouped[category][subcategory] = [];
+        }
+        
+        grouped[category][subcategory].push(item);
     });
     
     return grouped;
@@ -63,51 +76,42 @@ async function loadPriceList() {
     }
 }
 
-// Display price list on page
+// Display price list on page with hierarchical structure
 function displayPriceList() {
     const container = document.getElementById('price-list-container');
-    const grouped = groupByCategory(priceListData);
+    const grouped = groupHierarchically(priceListData);
     
     let html = '';
     
     Object.keys(grouped).forEach(categoryKey => {
         const categoryName = tSafe(`pricelist.category.${categoryKey}`);
-        html += `
-            <div class="price-category">
-                <h3 class="category-title">${categoryName}</h3>
-                <div class="price-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>${tSafe('prices.table.treatment')}</th>
-                                <th>${tSafe('prices.table.price')}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-        `;
+        html += `<div class="price-category"><h3 class="category-title">${categoryName}</h3>`;
         
-        grouped[categoryKey].forEach(item => {
-            const serviceKey = item.ServiceKey;
-            // Skip items with missing ServiceKey or use fallback
-            if (!serviceKey || serviceKey.trim() === '') {
-                console.warn('Skipping item with missing ServiceKey:', item);
-                return;
-            }
-            const serviceName = tSafe(`pricelist.service.${serviceKey}`);
-            html += `
-                <tr>
-                    <td>${serviceName}</td>
-                    <td class="price">${item.Price}</td>
-                </tr>
-            `;
+        Object.keys(grouped[categoryKey]).forEach(subcategoryKey => {
+            const items = grouped[categoryKey][subcategoryKey];
+            
+            // Display items in hierarchical tree structure
+            items.forEach((item, index) => {
+                const serviceKey = item.ServiceKey;
+                if (!serviceKey || serviceKey.trim() === '') {
+                    console.warn('Skipping item with missing ServiceKey:', item);
+                    return;
+                }
+                
+                const serviceName = tSafe(`pricelist.service.${serviceKey}`);
+                const level = parseInt(item.Level) || 2;
+                const indent = (level - 2) * 20; // 0px for level 2, 20px for level 3
+                
+                html += `
+                    <div class="price-item level-${level}" style="padding-left: ${indent}px;">
+                        <span class="service-name">${serviceName}</span>
+                        <span class="service-price">${item.Price}</span>
+                    </div>
+                `;
+            });
         });
         
-        html += `
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        html += `</div>`;
     });
     
     container.innerHTML = html;
@@ -117,7 +121,7 @@ function displayPriceList() {
 function downloadPriceList() {
     // Create a printable version
     const printWindow = window.open('', '_blank');
-    const grouped = groupByCategory(priceListData);
+    const grouped = groupHierarchically(priceListData);
     
     let html = `
         <!DOCTYPE html>
@@ -144,22 +148,17 @@ function downloadPriceList() {
                     border-bottom: 2px solid #4a90e2;
                     padding-bottom: 5px;
                 }
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    margin-bottom: 30px;
-                }
-                th {
-                    background-color: #f4f4f4;
-                    padding: 10px;
-                    text-align: left;
-                    border-bottom: 2px solid #ddd;
-                }
-                td {
+                .price-item {
+                    display: flex;
+                    justify-content: space-between;
                     padding: 8px 10px;
                     border-bottom: 1px solid #eee;
                 }
-                .price {
+                .price-item.level-3 {
+                    padding-left: 30px;
+                    font-size: 0.95em;
+                }
+                .service-price {
                     font-weight: bold;
                     color: #4a90e2;
                 }
@@ -174,22 +173,23 @@ function downloadPriceList() {
     
     Object.keys(grouped).forEach(categoryKey => {
         const categoryName = tSafe(`pricelist.category.${categoryKey}`);
-        const treatmentHeader = tSafe('prices.table.treatment');
-        const priceHeader = tSafe('prices.table.price');
-        
         html += `<h2>${categoryName}</h2>`;
-        html += `<table><thead><tr>`;
-        html += `<th>${treatmentHeader}</th><th>${priceHeader}</th>`;
-        html += `</tr></thead><tbody>`;
         
-        grouped[categoryKey].forEach(item => {
-            const serviceKey = item.ServiceKey;
-            if (!serviceKey || serviceKey.trim() === '') return; // Skip invalid items
-            const serviceName = tSafe(`pricelist.service.${serviceKey}`);
-            html += `<tr><td>${serviceName}</td><td class="price">${item.Price}</td></tr>`;
+        Object.keys(grouped[categoryKey]).forEach(subcategoryKey => {
+            const items = grouped[categoryKey][subcategoryKey];
+            
+            items.forEach(item => {
+                const serviceKey = item.ServiceKey;
+                if (!serviceKey || serviceKey.trim() === '') return;
+                const serviceName = tSafe(`pricelist.service.${serviceKey}`);
+                const level = parseInt(item.Level) || 2;
+                
+                html += `<div class="price-item level-${level}">`;
+                html += `<span class="service-name">${serviceName}</span>`;
+                html += `<span class="service-price">${item.Price}</span>`;
+                html += `</div>`;
+            });
         });
-        
-        html += `</tbody></table>`;
     });
     
     html += `
