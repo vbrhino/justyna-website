@@ -40,14 +40,15 @@ function groupByCategory(data) {
 // Load and display price list
 async function loadPriceList() {
     try {
-        const response = await fetch('prijslijst.csv');
+        const lang = currentLang || 'nl';
+        const response = await fetch(`prijslijst-${lang}.csv`);
         const csvText = await response.text();
         priceListData = parseCSV(csvText);
         displayPriceList();
     } catch (error) {
         console.error('Error loading price list:', error);
         document.getElementById('price-list-container').innerHTML = 
-            '<p>Er is een probleem opgetreden bij het laden van de prijslijst. Neem contact met ons op voor actuele prijzen.</p>';
+            `<p>${t('prices.error')}</p>`;
     }
 }
 
@@ -66,9 +67,9 @@ function displayPriceList() {
                     <table>
                         <thead>
                             <tr>
-                                <th>Behandeling</th>
-                                <th>Duur</th>
-                                <th>Prijs</th>
+                                <th>${t('prices.table.treatment')}</th>
+                                <th>${t('prices.table.duration')}</th>
+                                <th>${t('prices.table.price')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,10 +104,10 @@ function downloadPriceList() {
     
     let html = `
         <!DOCTYPE html>
-        <html lang="nl">
+        <html lang="${currentLang || 'nl'}">
         <head>
             <meta charset="UTF-8">
-            <title>Prijslijst - Justyna Beauty Salon</title>
+            <title>${t('prices.title')} - Be Beauty</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -151,11 +152,11 @@ function downloadPriceList() {
             </style>
         </head>
         <body>
-            <h1>Prijslijst - Justyna Beauty Salon</h1>
+            <h1>${t('prices.title')} - Be Beauty</h1>
     `;
     
     Object.keys(grouped).forEach(category => {
-        html += `<h2>${category}</h2><table><thead><tr><th>Behandeling</th><th>Duur</th><th>Prijs</th></tr></thead><tbody>`;
+        html += `<h2>${category}</h2><table><thead><tr><th>${t('prices.table.treatment')}</th><th>${t('prices.table.duration')}</th><th>${t('prices.table.price')}</th></tr></thead><tbody>`;
         
         grouped[category].forEach(item => {
             html += `<tr><td>${item.Service}</td><td>${item.Duration}</td><td class="price">${item.Price}</td></tr>`;
@@ -166,7 +167,7 @@ function downloadPriceList() {
     
     html += `
             <p style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
-                Voor meer informatie: info@justyna-beauty.com | +31 6 12345678
+                Be Beauty | info@bebeauty.com | +31 6 12345678
             </p>
         </body>
         </html>

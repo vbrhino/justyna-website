@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Be Beauty - Professionele schoonheidsbehandelingen: Permanent Make-up, Wimperextensions, Nagels, Kobido Massage">
+    <meta name="description" content="Prijslijst Be Beauty - Onze actuele prijzen voor alle behandelingen">
     <meta name="author" content="Be Beauty">
-    <title>Be Beauty - Professionele Schoonheidssalon</title>
+    <title>Prijzen - Be Beauty</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body data-page="home">
+<body data-page="prices">
     <header>
         <nav>
             <div class="container">
@@ -24,9 +24,9 @@
                     </div>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
                     <li><a href="about.html" data-i18n="nav.about">Over Ons</a></li>
-                    <li><a href="prijzen.html" data-i18n="nav.prices">Prijzen</a></li>
+                    <li><a href="prijzen.html" class="active" data-i18n="nav.prices">Prijzen</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
@@ -34,30 +34,15 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section>
             <div class="container">
-                <h2 data-i18n="home.title">Welkom bij Be Beauty</h2>
-                <p data-i18n="home.subtitle">Professionele schoonheidsbehandelingen in een luxe omgeving</p>
-                <a href="#features" class="btn" data-i18n="home.cta">Meer Informatie</a>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <div class="container">
-                <h2 data-i18n="home.features.title">Onze Diensten</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature1.title">Permanent Make-up</h3>
-                        <p data-i18n="home.feature1.desc">Professionele permanent make-up voor wenkbrauwen, eyeliner en lippen.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature2.title">Wimperextensions</h3>
-                        <p data-i18n="home.feature2.desc">Classic, volume en mega volume wimperextensions voor een perfecte look.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 data-i18n="home.feature3.title">Kobido Massage</h3>
-                        <p data-i18n="home.feature3.desc">Japanse gezichtsmassage voor natuurlijke verjonging en ontspanning.</p>
-                    </div>
+                <h2 data-i18n="prices.title">Prijslijst</h2>
+                <p data-i18n="prices.intro">Bekijk onze actuele prijzen voor alle behandelingen. Neem contact op voor meer informatie of om een afspraak te maken.</p>
+                
+                <button class="download-btn" onclick="downloadPriceList()" data-i18n="prices.download">Download Prijslijst</button>
+                
+                <div id="price-list-container">
+                    <!-- Price list will be dynamically loaded here -->
                 </div>
             </div>
         </section>
@@ -76,5 +61,6 @@
     </footer>
     
     <script src="translations.js"></script>
+    <script src="prijslijst.js"></script>
 </body>
 </html>
