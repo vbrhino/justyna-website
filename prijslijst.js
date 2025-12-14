@@ -35,6 +35,11 @@ function groupByCategory(data) {
     
     data.forEach(item => {
         const category = item.CategoryKey;
+        // Skip items with missing CategoryKey
+        if (!category || category.trim() === '') {
+            console.warn('Skipping item with missing CategoryKey:', item);
+            return;
+        }
         if (!grouped[category]) {
             grouped[category] = [];
         }
@@ -82,7 +87,13 @@ function displayPriceList() {
         `;
         
         grouped[categoryKey].forEach(item => {
-            const serviceName = tSafe(`pricelist.service.${item.ServiceKey}`);
+            const serviceKey = item.ServiceKey;
+            // Skip items with missing ServiceKey or use fallback
+            if (!serviceKey || serviceKey.trim() === '') {
+                console.warn('Skipping item with missing ServiceKey:', item);
+                return;
+            }
+            const serviceName = tSafe(`pricelist.service.${serviceKey}`);
             html += `
                 <tr>
                     <td>${serviceName}</td>
@@ -113,7 +124,7 @@ function downloadPriceList() {
         <html lang="${currentLang || 'nl'}">
         <head>
             <meta charset="UTF-8">
-            <title>${tSafe('prices.title')} - Be Beauty</title>
+            <title>${tSafe('prices.title')} - Be Beauty JS</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -158,7 +169,7 @@ function downloadPriceList() {
             </style>
         </head>
         <body>
-            <h1>${tSafe('prices.title')} - Be Beauty</h1>
+            <h1>${tSafe('prices.title')} - Be Beauty JS</h1>
     `;
     
     Object.keys(grouped).forEach(categoryKey => {
@@ -166,7 +177,9 @@ function downloadPriceList() {
         html += `<h2>${categoryName}</h2><table><thead><tr><th>${tSafe('prices.table.treatment')}</th><th>${tSafe('prices.table.price')}</th></tr></thead><tbody>`;
         
         grouped[categoryKey].forEach(item => {
-            const serviceName = tSafe(`pricelist.service.${item.ServiceKey}`);
+            const serviceKey = item.ServiceKey;
+            if (!serviceKey || serviceKey.trim() === '') return; // Skip invalid items
+            const serviceName = tSafe(`pricelist.service.${serviceKey}`);
             html += `<tr><td>${serviceName}</td><td class="price">${item.Price}</td></tr>`;
         });
         
@@ -175,8 +188,8 @@ function downloadPriceList() {
     
     html += `
             <p style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
-                Be Beauty | info@bebeauty.com | +31 6 12345678<br>
-                <em style="font-size: 12px;">Note: Update contact information before deployment</em>
+                Be Beauty JS | <a href="mailto:contact@bebeautyjs.be">contact@bebeautyjs.be</a> | <a href="tel:+32488485290">0488 48 52 90</a><br>
+                Kroonstraat 33, 9300 Aalst
             </p>
         </body>
         </html>

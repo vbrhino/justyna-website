@@ -11,7 +11,7 @@ const translations = {
         'nav.contact': 'Contact',
         
         // Home page
-        'home.title': 'Welkom bij Be Beauty',
+        'home.title': 'Welkom bij Be Beauty JS',
         'home.subtitle': 'Professionele schoonheidsbehandelingen in een luxe omgeving',
         'home.cta': 'Meer Informatie',
         'home.features.title': 'Onze Diensten',
@@ -25,10 +25,10 @@ const translations = {
         'home.feature4.desc': 'Professionele nagelbehandelingen, van gellak tot kunstnagels met verlenging.',
         
         // About page
-        'about.title': 'Over Be Beauty',
-        'about.intro': 'Welkom bij Be Beauty! Wij zijn gespecialiseerd in professionele schoonheidsbehandelingen met een persoonlijke touch.',
+        'about.title': 'Over Be Beauty JS',
+        'about.intro': 'Welkom bij Be Beauty JS! Wij zijn gespecialiseerd in professionele schoonheidsbehandelingen met een persoonlijke touch.',
         'about.mission.title': 'Onze Missie',
-        'about.mission.text': 'Bij Be Beauty geloven we in het versterken van natuurlijke schoonheid. We bieden hoogwaardige behandelingen in een ontspannen, luxe omgeving. Onze ervaren specialisten gebruiken alleen de beste producten en technieken om jou het beste resultaat te geven.',
+        'about.mission.text': 'Bij Be Beauty JS geloven we in het versterken van natuurlijke schoonheid. We bieden hoogwaardige behandelingen in een ontspannen, luxe omgeving. Onze ervaren specialisten gebruiken alleen de beste producten en technieken om jou het beste resultaat te geven.',
         'about.services.title': 'Wat We Aanbieden',
         'about.services.intro': 'Onze salon biedt een breed scala aan professionele schoonheidsbehandelingen:',
         'about.services.pmu': 'Permanent Make-up - Wenkbrauwen, Eyeliner en Lippen',
@@ -64,6 +64,7 @@ const translations = {
         'contact.info.email': 'E-mail',
         'contact.info.phone': 'Telefoon',
         'contact.info.address': 'Adres',
+        'contact.info.preferred': 'Voorkeur contact',
         'contact.info.social': 'Volg Ons',
         
         // Calendar
@@ -167,7 +168,7 @@ const translations = {
         'nav.contact': 'Contact',
         
         // Home page
-        'home.title': 'Welcome to Be Beauty',
+        'home.title': 'Welcome to Be Beauty JS',
         'home.subtitle': 'Professional beauty treatments in a luxury environment',
         'home.cta': 'Learn More',
         'home.features.title': 'Our Services',
@@ -181,10 +182,10 @@ const translations = {
         'home.feature4.desc': 'Professional nail treatments, from gel polish to artificial nails with extensions.',
         
         // About page
-        'about.title': 'About Be Beauty',
-        'about.intro': 'Welcome to Be Beauty! We specialize in professional beauty treatments with a personal touch.',
+        'about.title': 'About Be Beauty JS',
+        'about.intro': 'Welcome to Be Beauty JS! We specialize in professional beauty treatments with a personal touch.',
         'about.mission.title': 'Our Mission',
-        'about.mission.text': 'At Be Beauty we believe in enhancing natural beauty. We offer high-quality treatments in a relaxed, luxurious environment. Our experienced specialists use only the best products and techniques to give you the best results.',
+        'about.mission.text': 'At Be Beauty JS we believe in enhancing natural beauty. We offer high-quality treatments in a relaxed, luxurious environment. Our experienced specialists use only the best products and techniques to give you the best results.',
         'about.services.title': 'What We Offer',
         'about.services.intro': 'Our salon offers a wide range of professional beauty treatments:',
         'about.services.pmu': 'Permanent Make-up - Eyebrows, Eyeliner and Lips',
@@ -220,6 +221,7 @@ const translations = {
         'contact.info.email': 'Email',
         'contact.info.phone': 'Phone',
         'contact.info.address': 'Address',
+        'contact.info.preferred': 'Preferred contact',
         'contact.info.social': 'Follow Us',
         
         // Calendar
@@ -323,7 +325,7 @@ const translations = {
         'nav.contact': 'Kontakt',
         
         // Home page
-        'home.title': 'Witamy w Be Beauty',
+        'home.title': 'Witamy w Be Beauty JS',
         'home.subtitle': 'Profesjonalne zabiegi kosmetyczne w luksusowym środowisku',
         'home.cta': 'Dowiedz Się Więcej',
         'home.features.title': 'Nasze Usługi',
@@ -337,10 +339,10 @@ const translations = {
         'home.feature4.desc': 'Profesjonalne zabiegi na paznokcie, od lakieru hybrydowego po sztuczne paznokcie z przedłużeniem.',
         
         // About page
-        'about.title': 'O Be Beauty',
-        'about.intro': 'Witamy w Be Beauty! Specjalizujemy się w profesjonalnych zabiegach kosmetycznych z osobistym podejściem.',
+        'about.title': 'O Be Beauty JS',
+        'about.intro': 'Witamy w Be Beauty JS! Specjalizujemy się w profesjonalnych zabiegach kosmetycznych z osobistym podejściem.',
         'about.mission.title': 'Nasza Misja',
-        'about.mission.text': 'W Be Beauty wierzymy w podkreślanie naturalnego piękna. Oferujemy wysokiej jakości zabiegi w relaksującej, luksusowej atmosferze. Nasi doświadczeni specjaliści używają tylko najlepszych produktów i technik, aby zapewnić Ci najlepsze rezultaty.',
+        'about.mission.text': 'W Be Beauty JS wierzymy w podkreślanie naturalnego piękna. Oferujemy wysokiej jakości zabiegi w relaksującej, luksusowej atmosferze. Nasi doświadczeni specjaliści używają tylko najlepszych produktów i technik, aby zapewnić Ci najlepsze rezultaty.',
         'about.services.title': 'Co Oferujemy',
         'about.services.intro': 'Nasz salon oferuje szeroki zakres profesjonalnych zabiegów kosmetycznych:',
         'about.services.pmu': 'Makijaż Permanentny - Brwi, Eyeliner i Usta',
@@ -376,6 +378,7 @@ const translations = {
         'contact.info.email': 'E-mail',
         'contact.info.phone': 'Telefon',
         'contact.info.address': 'Adres',
+        'contact.info.preferred': 'Preferowany kontakt',
         'contact.info.social': 'Obserwuj Nas',
         
         // Calendar

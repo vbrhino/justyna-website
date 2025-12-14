@@ -321,7 +321,6 @@ button[type="submit"]:hover {
 footer {
     background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     color: var(--white);
-    text-align: center;
     padding: 3rem 0;
     margin-top: 5rem;
 }
@@ -331,6 +330,32 @@ footer .container {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
+}
+
+footer .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+footer .footer-section h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+footer .footer-section p {
+    margin: 0.3rem 0;
+}
+
+footer .footer-section a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+footer .footer-section a:hover {
+    text-decoration: underline;
 }
 
 footer .social-links {
@@ -672,7 +697,7 @@ footer .social-links a:hover {
 /* Kobido page styles */
 .kobido-content {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr 360px;
     gap: 3rem;
     margin-top: 2rem;
 }
@@ -745,7 +770,10 @@ footer .social-links a:hover {
 
 .kobido-image img {
     width: 100%;
+    max-width: 360px;
     height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
@@ -753,12 +781,21 @@ footer .social-links a:hover {
 /* Responsive adjustments for Kobido */
 @media (max-width: 1024px) {
     .kobido-content {
-        grid-template-columns: 1fr 350px;
+        grid-template-columns: 1fr 300px;
         gap: 2rem;
+    }
+    
+    .kobido-image img {
+        max-width: 300px;
     }
 }
 
 @media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
     .kobido-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -766,8 +803,12 @@ footer .social-links a:hover {
     
     .kobido-image {
         position: relative;
-        max-width: 400px;
+        max-width: 360px;
         margin: 0 auto;
+    }
+    
+    .kobido-image img {
+        max-width: 100%;
     }
     
     .kobido-text {
