@@ -174,7 +174,13 @@ function downloadPriceList() {
     
     Object.keys(grouped).forEach(categoryKey => {
         const categoryName = tSafe(`pricelist.category.${categoryKey}`);
-        html += `<h2>${categoryName}</h2><table><thead><tr><th>${tSafe('prices.table.treatment')}</th><th>${tSafe('prices.table.price')}</th></tr></thead><tbody>`;
+        const treatmentHeader = tSafe('prices.table.treatment');
+        const priceHeader = tSafe('prices.table.price');
+        
+        html += `<h2>${categoryName}</h2>`;
+        html += `<table><thead><tr>`;
+        html += `<th>${treatmentHeader}</th><th>${priceHeader}</th>`;
+        html += `</tr></thead><tbody>`;
         
         grouped[categoryKey].forEach(item => {
             const serviceKey = item.ServiceKey;

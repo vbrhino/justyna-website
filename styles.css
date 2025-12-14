@@ -94,6 +94,11 @@ nav .container {
     font-family: 'Georgia', serif;
 }
 
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -791,8 +796,8 @@ footer .social-links a:hover {
 }
 
 @media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr !important;
+    footer .footer-content {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
