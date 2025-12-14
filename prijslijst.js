@@ -100,10 +100,9 @@ function displayPriceList() {
                 
                 const serviceName = tSafe(`pricelist.service.${serviceKey}`);
                 const level = parseInt(item.Level) || 2;
-                const indent = (level - 2) * 20; // 0px for level 2, 20px for level 3
                 
                 html += `
-                    <div class="price-item level-${level}" style="padding-left: ${indent}px;">
+                    <div class="price-item level-${level}">
                         <span class="service-name">${serviceName}</span>
                         <span class="service-price">${item.Price}</span>
                     </div>
