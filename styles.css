@@ -668,3 +668,109 @@ footer .social-links a:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* Kobido page styles */
+.kobido-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.kobido-text {
+    padding-right: 1rem;
+}
+
+.kobido-text h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.kobido-text h2 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.kobido-text h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.kobido-text .duration {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.kobido-text .intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+.benefits-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+.benefits-list li {
+    padding: 0.8rem 0;
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.benefits-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.kobido-image {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+}
+
+.kobido-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments for Kobido */
+@media (max-width: 1024px) {
+    .kobido-content {
+        grid-template-columns: 1fr 350px;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .kobido-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .kobido-image {
+        position: relative;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .kobido-text {
+        padding-right: 0;
+    }
+}

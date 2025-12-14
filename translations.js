@@ -6,6 +6,7 @@ const translations = {
         'nav.about': 'Over Ons',
         'nav.services': 'Diensten',
         'nav.prices': 'Prijzen',
+        'nav.kobido': 'Kobido',
         'nav.appointments': 'Afspraken',
         'nav.contact': 'Contact',
         
@@ -136,6 +137,24 @@ const translations = {
         
         // Kobido
         'pricelist.service.massage': 'Kobido massage',
+        
+        // Kobido page
+        'kobido.title': 'KOBIDO UP',
+        'kobido.subtitle': 'Japanse Gezichtsmassage',
+        'kobido.duration.label': 'Duurtijd:',
+        'kobido.duration.time': '90 minuten',
+        'kobido.intro': 'Laat je verwennen met een diepe, ontspannende en natuurlijk liftende gezichtsmassage',
+        'kobido.benefits.title': 'Voordelen:',
+        'kobido.benefits.collagen': 'Stimuleert collageen productie',
+        'kobido.benefits.elasticity': 'Verbetert huid-elasticiteit',
+        'kobido.benefits.wrinkles': 'Vermindert fijne lijntjes en rimpels',
+        'kobido.benefits.circulation': 'Activeert de lymfedrainage en bloedcirculatie',
+        'kobido.benefits.contour': 'Verbetert en lift gezichtscontour',
+        'kobido.benefits.relaxation': 'Pure ontspanning voor gezicht en geest',
+        'kobido.taping.title': 'Wat is gezichtstaping?',
+        'kobido.taping.desc1': 'Gezichtstaping is een techniek na de Kobido-massage waarbij speciale tapes op de huid worden aangebracht.',
+        'kobido.taping.desc2': 'Ze helpen om het liftend effect te behouden, spanningen te verminderen en de doorbloeding te verbeteren.',
+        'kobido.taping.desc3': 'Je huid blijft langer fris en stralend',
     },
     en: {
         // Navigation
@@ -143,6 +162,7 @@ const translations = {
         'nav.about': 'About Us',
         'nav.services': 'Services',
         'nav.prices': 'Prices',
+        'nav.kobido': 'Kobido',
         'nav.appointments': 'Appointments',
         'nav.contact': 'Contact',
         
@@ -273,6 +293,24 @@ const translations = {
         
         // Kobido
         'pricelist.service.massage': 'Kobido massage',
+        
+        // Kobido page
+        'kobido.title': 'KOBIDO UP',
+        'kobido.subtitle': 'Japanese Facial Massage',
+        'kobido.duration.label': 'Duration:',
+        'kobido.duration.time': '90 minutes',
+        'kobido.intro': 'Let yourself be pampered with a deep, relaxing and naturally lifting facial massage',
+        'kobido.benefits.title': 'Benefits:',
+        'kobido.benefits.collagen': 'Stimulates collagen production',
+        'kobido.benefits.elasticity': 'Improves skin elasticity',
+        'kobido.benefits.wrinkles': 'Reduces fine lines and wrinkles',
+        'kobido.benefits.circulation': 'Activates lymphatic drainage and blood circulation',
+        'kobido.benefits.contour': 'Improves and lifts facial contour',
+        'kobido.benefits.relaxation': 'Pure relaxation for face and mind',
+        'kobido.taping.title': 'What is facial taping?',
+        'kobido.taping.desc1': 'Facial taping is a technique after the Kobido massage where special tapes are applied to the skin.',
+        'kobido.taping.desc2': 'They help maintain the lifting effect, reduce tension and improve blood circulation.',
+        'kobido.taping.desc3': 'Your skin stays fresh and radiant longer',
     },
     pl: {
         // Navigation
@@ -280,6 +318,7 @@ const translations = {
         'nav.about': 'O Nas',
         'nav.services': 'Usługi',
         'nav.prices': 'Cennik',
+        'nav.kobido': 'Kobido',
         'nav.appointments': 'Spotkania',
         'nav.contact': 'Kontakt',
         
@@ -410,6 +449,24 @@ const translations = {
         
         // Kobido
         'pricelist.service.massage': 'Masaż Kobido',
+        
+        // Kobido page
+        'kobido.title': 'KOBIDO UP',
+        'kobido.subtitle': 'Japoński Masaż Twarzy',
+        'kobido.duration.label': 'Czas trwania:',
+        'kobido.duration.time': '90 minut',
+        'kobido.intro': 'Pozwól się rozpieszczać głębokim, relaksującym i naturalnie liftującym masażem twarzy',
+        'kobido.benefits.title': 'Korzyści:',
+        'kobido.benefits.collagen': 'Stymuluje produkcję kolagenu',
+        'kobido.benefits.elasticity': 'Poprawia elastyczność skóry',
+        'kobido.benefits.wrinkles': 'Zmniejsza drobne linie i zmarszczki',
+        'kobido.benefits.circulation': 'Aktywuje drenaż limfatyczny i krążenie krwi',
+        'kobido.benefits.contour': 'Poprawia i liftuje kontur twarzy',
+        'kobido.benefits.relaxation': 'Czysta relaksacja dla twarzy i umysłu',
+        'kobido.taping.title': 'Co to jest tapingowanie twarzy?',
+        'kobido.taping.desc1': 'Tapingowanie twarzy to technika po masażu Kobido, w której specjalne taśmy nakładane są na skórę.',
+        'kobido.taping.desc2': 'Pomagają one utrzymać efekt liftingujący, zmniejszyć napięcie i poprawić krążenie krwi.',
+        'kobido.taping.desc3': 'Twoja skóra pozostaje świeża i promienna dłużej',
     }
 };
 

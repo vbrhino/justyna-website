@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kobido - Japanse Gezichtsmassage bij Be Beauty">
+    <meta name="author" content="Be Beauty">
+    <title>Kobido - Be Beauty</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body data-page="kobido">
+    <header>
+        <nav>
+            <div class="container">
+                <div class="nav-left">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="logo.svg" alt="Be Beauty" style="height: 50px;">
+                        </a>
+                    </div>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="nl" onclick="changeLanguage('nl')">NL</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+                        <button class="lang-btn" data-lang="pl" onclick="changeLanguage('pl')">PL</button>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">Over Ons</a></li>
+                    <li><a href="prijzen.html" data-i18n="nav.prices">Prijzen</a></li>
+                    <li><a href="kobido.html" class="active" data-i18n="nav.kobido">Kobido</a></li>
+                    <li><a href="afspraken.html" data-i18n="nav.appointments">Afspraken</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <div class="kobido-content">
+                    <div class="kobido-text">
+                        <h1 data-i18n="kobido.title">KOBIDO UP</h1>
+                        <h2 data-i18n="kobido.subtitle">Japanse Gezichtsmassage</h2>
+                        
+                        <p class="duration"><strong data-i18n="kobido.duration.label">Duurtijd:</strong> <span data-i18n="kobido.duration.time">90 minuten</span></p>
+                        
+                        <p class="intro" data-i18n="kobido.intro">Laat je verwennen met een diepe, ontspannende en natuurlijk liftende gezichtsmassage</p>
+                        
+                        <h3 data-i18n="kobido.benefits.title">Voordelen:</h3>
+                        <ul class="benefits-list">
+                            <li data-i18n="kobido.benefits.collagen">Stimuleert collageen productie</li>
+                            <li data-i18n="kobido.benefits.elasticity">Verbetert huid-elasticiteit</li>
+                            <li data-i18n="kobido.benefits.wrinkles">Vermindert fijne lijntjes en rimpels</li>
+                            <li data-i18n="kobido.benefits.circulation">Activeert de lymfedrainage en bloedcirculatie</li>
+                            <li data-i18n="kobido.benefits.contour">Verbetert en lift gezichtscontour</li>
+                            <li data-i18n="kobido.benefits.relaxation">Pure ontspanning voor gezicht en geest</li>
+                        </ul>
+                        
+                        <h3 data-i18n="kobido.taping.title">Wat is gezichtstaping?</h3>
+                        <p data-i18n="kobido.taping.desc1">Gezichtstaping is een techniek na de Kobido-massage waarbij speciale tapes op de huid worden aangebracht.</p>
+                        <p data-i18n="kobido.taping.desc2">Ze helpen om het liftend effect te behouden, spanningen te verminderen en de doorbloeding te verbeteren.</p>
+                        <p data-i18n="kobido.taping.desc3">Je huid blijft langer fris en stralend</p>
+                    </div>
+                    
+                    <div class="kobido-image">
+                        <img src="kobido-placeholder.svg" alt="Kobido Massage" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Be Beauty JS. <span data-i18n="footer.rights">Alle rechten voorbehouden</span></p>
+            <div class="social-links">
+                <span data-i18n="footer.follow">Volg ons:</span>
+                <a href="https://www.instagram.com/js.bebeauty" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/BeBeautySmugaJustyna" target="_blank">Facebook</a>
+                <a href="https://www.tiktok.com/@bebeauty.js" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="translations.js"></script>
+</body>
+</html>
