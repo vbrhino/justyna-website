@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Over Be Beauty - Professionele schoonheidssalon">
+    <meta name="description" content="Kobido - Japanse Gezichtsmassage bij Be Beauty JS">
     <meta name="author" content="Be Beauty JS">
-    <title>Over Ons - Be Beauty</title>
+    <title>Kobido - Be Beauty</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body data-page="about">
+<body data-page="kobido">
     <header>
         <nav>
             <div class="container">
@@ -27,9 +27,9 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-                    <li><a href="about.html" class="active" data-i18n="nav.about">Over Ons</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">Over Ons</a></li>
                     <li><a href="prijzen.html" data-i18n="nav.prices">Prijzen</a></li>
-                    <li><a href="kobido.html" data-i18n="nav.kobido">Kobido</a></li>
+                    <li><a href="kobido.html" class="active" data-i18n="nav.kobido">Kobido</a></li>
                     <li><a href="afspraken.html" data-i18n="nav.appointments">Afspraken</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
@@ -40,24 +40,35 @@
     <main>
         <section>
             <div class="container">
-                <h2 data-i18n="about.title">Over Be Beauty</h2>
-                <p data-i18n="about.intro">Welkom bij Be Beauty! Wij zijn gespecialiseerd in professionele schoonheidsbehandelingen met een persoonlijke touch.</p>
-                
-                <h3 class="section-heading" data-i18n="about.mission.title">Onze Missie</h3>
-                <p data-i18n="about.mission.text">Bij Be Beauty geloven we in het versterken van natuurlijke schoonheid. We bieden hoogwaardige behandelingen in een ontspannen, luxe omgeving. Onze ervaren specialisten gebruiken alleen de beste producten en technieken om jou het beste resultaat te geven.</p>
-                
-                <h3 class="section-heading" data-i18n="about.services.title">Wat We Aanbieden</h3>
-                <p data-i18n="about.services.intro">Onze salon biedt een breed scala aan professionele schoonheidsbehandelingen:</p>
-                <ul class="feature-list">
-                    <li data-i18n="about.services.pmu">Permanent Make-up - Wenkbrauwen, Eyeliner en Lippen</li>
-                    <li data-i18n="about.services.lashes">Wimperextensions - Classic, Volume en Mega Volume</li>
-                    <li data-i18n="about.services.brows">Wenkbrauwen & Wimpers - Verven, Epileren, Liften, Lamineren</li>
-                    <li data-i18n="about.services.nails">Nagels - Manicure, Gellak, Acryl/Gel Nagels</li>
-                    <li data-i18n="about.services.kobido">Kobido Massage - Japanse Gezichtsmassage</li>
-                </ul>
-                
-                <h3 class="section-heading" data-i18n="about.contact.title">Kom Langs</h3>
-                <p data-i18n="about.contact.text">We nodigen je graag uit om onze salon te bezoeken voor een persoonlijk consult. Ontdek hoe we jouw natuurlijke schoonheid kunnen versterken.</p>
+                <div class="kobido-content">
+                    <div class="kobido-text">
+                        <h1 data-i18n="kobido.title">KOBIDO UP</h1>
+                        <h2 data-i18n="kobido.subtitle">Japanse Gezichtsmassage</h2>
+                        
+                        <p class="duration"><strong data-i18n="kobido.duration.label">Duurtijd:</strong> <span data-i18n="kobido.duration.time">90 minuten</span></p>
+                        
+                        <p class="intro" data-i18n="kobido.intro">Laat je verwennen met een diepe, ontspannende en natuurlijk liftende gezichtsmassage</p>
+                        
+                        <h3 data-i18n="kobido.benefits.title">Voordelen:</h3>
+                        <ul class="benefits-list">
+                            <li data-i18n="kobido.benefits.collagen">Stimuleert collageen productie</li>
+                            <li data-i18n="kobido.benefits.elasticity">Verbetert huid-elasticiteit</li>
+                            <li data-i18n="kobido.benefits.wrinkles">Vermindert fijne lijntjes en rimpels</li>
+                            <li data-i18n="kobido.benefits.circulation">Activeert de lymfedrainage en bloedcirculatie</li>
+                            <li data-i18n="kobido.benefits.contour">Verbetert en lift gezichtscontour</li>
+                            <li data-i18n="kobido.benefits.relaxation">Pure ontspanning voor gezicht en geest</li>
+                        </ul>
+                        
+                        <h3 data-i18n="kobido.taping.title">Wat is gezichtstaping?</h3>
+                        <p data-i18n="kobido.taping.desc1">Gezichtstaping is een techniek na de Kobido-massage waarbij speciale tapes op de huid worden aangebracht.</p>
+                        <p data-i18n="kobido.taping.desc2">Ze helpen om het liftend effect te behouden, spanningen te verminderen en de doorbloeding te verbeteren.</p>
+                        <p data-i18n="kobido.taping.desc3">Je huid blijft langer fris en stralend</p>
+                    </div>
+                    
+                    <div class="kobido-image">
+                        <img src="kobido-placeholder.svg" alt="Kobido Massage" />
+                    </div>
+                </div>
             </div>
         </section>
     </main>

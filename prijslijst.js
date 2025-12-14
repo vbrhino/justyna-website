@@ -34,7 +34,12 @@ function groupByCategory(data) {
     const grouped = {};
     
     data.forEach(item => {
-        const category = item.Category;
+        const category = item.CategoryKey;
+        // Skip items with missing CategoryKey
+        if (!category || category.trim() === '') {
+            console.warn('Skipping item with missing CategoryKey:', item);
+            return;
+        }
         if (!grouped[category]) {
             grouped[category] = [];
         }
@@ -47,8 +52,7 @@ function groupByCategory(data) {
 // Load and display price list
 async function loadPriceList() {
     try {
-        const lang = currentLang || 'nl';
-        const response = await fetch(`prijslijst-${lang}.csv`);
+        const response = await fetch('prijslijst.csv');
         const csvText = await response.text();
         priceListData = parseCSV(csvText);
         displayPriceList();
@@ -66,27 +70,33 @@ function displayPriceList() {
     
     let html = '';
     
-    Object.keys(grouped).forEach(category => {
+    Object.keys(grouped).forEach(categoryKey => {
+        const categoryName = tSafe(`pricelist.category.${categoryKey}`);
         html += `
             <div class="price-category">
-                <h3 class="category-title">${category}</h3>
+                <h3 class="category-title">${categoryName}</h3>
                 <div class="price-table">
                     <table>
                         <thead>
                             <tr>
                                 <th>${tSafe('prices.table.treatment')}</th>
-                                <th>${tSafe('prices.table.duration')}</th>
                                 <th>${tSafe('prices.table.price')}</th>
                             </tr>
                         </thead>
                         <tbody>
         `;
         
-        grouped[category].forEach(item => {
+        grouped[categoryKey].forEach(item => {
+            const serviceKey = item.ServiceKey;
+            // Skip items with missing ServiceKey or use fallback
+            if (!serviceKey || serviceKey.trim() === '') {
+                console.warn('Skipping item with missing ServiceKey:', item);
+                return;
+            }
+            const serviceName = tSafe(`pricelist.service.${serviceKey}`);
             html += `
                 <tr>
-                    <td>${item.Service}</td>
-                    <td>${item.Duration}</td>
+                    <td>${serviceName}</td>
                     <td class="price">${item.Price}</td>
                 </tr>
             `;
@@ -114,7 +124,7 @@ function downloadPriceList() {
         <html lang="${currentLang || 'nl'}">
         <head>
             <meta charset="UTF-8">
-            <title>${tSafe('prices.title')} - Be Beauty</title>
+            <title>${tSafe('prices.title')} - Be Beauty JS</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -159,14 +169,24 @@ function downloadPriceList() {
             </style>
         </head>
         <body>
-            <h1>${tSafe('prices.title')} - Be Beauty</h1>
+            <h1>${tSafe('prices.title')} - Be Beauty JS</h1>
     `;
     
-    Object.keys(grouped).forEach(category => {
-        html += `<h2>${category}</h2><table><thead><tr><th>${tSafe('prices.table.treatment')}</th><th>${tSafe('prices.table.duration')}</th><th>${tSafe('prices.table.price')}</th></tr></thead><tbody>`;
+    Object.keys(grouped).forEach(categoryKey => {
+        const categoryName = tSafe(`pricelist.category.${categoryKey}`);
+        const treatmentHeader = tSafe('prices.table.treatment');
+        const priceHeader = tSafe('prices.table.price');
         
-        grouped[category].forEach(item => {
-            html += `<tr><td>${item.Service}</td><td>${item.Duration}</td><td class="price">${item.Price}</td></tr>`;
+        html += `<h2>${categoryName}</h2>`;
+        html += `<table><thead><tr>`;
+        html += `<th>${treatmentHeader}</th><th>${priceHeader}</th>`;
+        html += `</tr></thead><tbody>`;
+        
+        grouped[categoryKey].forEach(item => {
+            const serviceKey = item.ServiceKey;
+            if (!serviceKey || serviceKey.trim() === '') return; // Skip invalid items
+            const serviceName = tSafe(`pricelist.service.${serviceKey}`);
+            html += `<tr><td>${serviceName}</td><td class="price">${item.Price}</td></tr>`;
         });
         
         html += `</tbody></table>`;
@@ -174,8 +194,8 @@ function downloadPriceList() {
     
     html += `
             <p style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
-                Be Beauty | info@bebeauty.com | +31 6 12345678<br>
-                <em style="font-size: 12px;">Note: Update contact information before deployment</em>
+                Be Beauty JS | <a href="mailto:contact@bebeautyjs.be">contact@bebeautyjs.be</a> | <a href="tel:+32488485290">0488 48 52 90</a><br>
+                Kroonstraat 33, 9300 Aalst
             </p>
         </body>
         </html>

@@ -6,10 +6,12 @@ const translations = {
         'nav.about': 'Over Ons',
         'nav.services': 'Diensten',
         'nav.prices': 'Prijzen',
+        'nav.kobido': 'Kobido',
+        'nav.appointments': 'Afspraken',
         'nav.contact': 'Contact',
         
         // Home page
-        'home.title': 'Welkom bij Be Beauty',
+        'home.title': 'Welkom bij Be Beauty JS',
         'home.subtitle': 'Professionele schoonheidsbehandelingen in een luxe omgeving',
         'home.cta': 'Meer Informatie',
         'home.features.title': 'Onze Diensten',
@@ -19,12 +21,14 @@ const translations = {
         'home.feature2.desc': 'Classic, volume en mega volume wimperextensions voor een perfecte look.',
         'home.feature3.title': 'Kobido Massage',
         'home.feature3.desc': 'Japanse gezichtsmassage voor natuurlijke verjonging en ontspanning.',
+        'home.feature4.title': 'Nagels',
+        'home.feature4.desc': 'Professionele nagelbehandelingen, van gellak tot kunstnagels met verlenging.',
         
         // About page
-        'about.title': 'Over Be Beauty',
-        'about.intro': 'Welkom bij Be Beauty! Wij zijn gespecialiseerd in professionele schoonheidsbehandelingen met een persoonlijke touch.',
+        'about.title': 'Over Be Beauty JS',
+        'about.intro': 'Welkom bij Be Beauty JS! Wij zijn gespecialiseerd in professionele schoonheidsbehandelingen met een persoonlijke touch.',
         'about.mission.title': 'Onze Missie',
-        'about.mission.text': 'Bij Be Beauty geloven we in het versterken van natuurlijke schoonheid. We bieden hoogwaardige behandelingen in een ontspannen, luxe omgeving. Onze ervaren specialisten gebruiken alleen de beste producten en technieken om jou het beste resultaat te geven.',
+        'about.mission.text': 'Bij Be Beauty JS geloven we in het versterken van natuurlijke schoonheid. We bieden hoogwaardige behandelingen in een ontspannen, luxe omgeving. Onze ervaren specialisten gebruiken alleen de beste producten en technieken om jou het beste resultaat te geven.',
         'about.services.title': 'Wat We Aanbieden',
         'about.services.intro': 'Onze salon biedt een breed scala aan professionele schoonheidsbehandelingen:',
         'about.services.pmu': 'Permanent Make-up - Wenkbrauwen, Eyeliner en Lippen',
@@ -60,6 +64,7 @@ const translations = {
         'contact.info.email': 'E-mail',
         'contact.info.phone': 'Telefoon',
         'contact.info.address': 'Adres',
+        'contact.info.preferred': 'Voorkeur contact',
         'contact.info.social': 'Volg Ons',
         
         // Calendar
@@ -67,12 +72,90 @@ const translations = {
         'calendar.subtitle': 'Bekijk onze beschikbaarheid voor de komende 30 dagen',
         'calendar.available': 'Beschikbaar',
         'calendar.booked': 'Bezet',
-        'calendar.closed': 'Gesloten',
+        'calendar.no_appointments': 'Geen beschikbare afspraken',
         'calendar.error': 'Er is een probleem opgetreden bij het laden van de afspraken.',
         
         // Footer
         'footer.rights': 'Alle rechten voorbehouden',
         'footer.follow': 'Volg ons',
+        
+        // Price list categories
+        'pricelist.category.pmu': 'Permanent Make-up',
+        'pricelist.category.lashes': 'Wimperextensions',
+        'pricelist.category.brows': 'Wenkbrauwen & Wimpers',
+        'pricelist.category.nails': 'Nagels',
+        'pricelist.category.kobido': 'Kobido Massage',
+        
+        // PMU Services
+        'pricelist.service.powder_brows': 'Powder / Ombre brows',
+        'pricelist.service.powder_brows_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.powder_brows_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.powder_brows_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.powder_brows_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.lips': 'Full / Ombre / Baby lips',
+        'pricelist.service.lips_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.lips_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.lips_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.lips_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.eyeliner': 'Eyeliner / Shadowliner',
+        'pricelist.service.eyeliner_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.eyeliner_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.eyeliner_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.eyeliner_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.deepliner': 'Deepliner',
+        'pricelist.service.deepliner_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.deepliner_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.deepliner_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.deepliner_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.deepliner_both': 'Deepliner Boven - Onder',
+        
+        // Lash Extensions
+        'pricelist.service.one_by_one': 'Nieuwe set one by one',
+        'pricelist.service.one_by_one_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.light_volume': 'Nieuwe set light volume',
+        'pricelist.service.light_volume_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.russe_volume': 'Nieuwe set russe volume',
+        'pricelist.service.russe_volume_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.mega_volume': 'Nieuwe set mega/extreme volume',
+        'pricelist.service.mega_volume_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.removal': 'Wimperextensions verwijderen',
+        
+        // Brows & Lashes
+        'pricelist.service.lash_lift': 'Wimperlift',
+        'pricelist.service.lash_lift_tint': 'Wimperlift + tint',
+        'pricelist.service.brow_lamination': 'Wenkbrauwen lamination',
+        'pricelist.service.brow_lamination_wax_tint': 'Wenkbrauwen lamination + wax & tint',
+        'pricelist.service.brow_wax': 'Wenkbrauwen wax',
+        'pricelist.service.brow_wax_tint': 'Wenkbrauwen wax & tint',
+        
+        // Nails
+        'pricelist.service.gel_extension': 'Nieuwe set gel nagels met verlenging',
+        'pricelist.service.gel_refill': 'Gel bijwerking',
+        'pricelist.service.gel_biab': 'Gel / Biab op eigen nagels',
+        'pricelist.service.gel_polish': 'Gellak op eigen nagels',
+        'pricelist.service.gel_removal': 'Verwijderen gel nagels',
+        'pricelist.service.gel_removal_manicure': 'Verwijderen gel nagels & mini manicure',
+        
+        // Kobido
+        'pricelist.service.massage': 'Kobido massage',
+        
+        // Kobido page
+        'kobido.title': 'KOBIDO UP',
+        'kobido.subtitle': 'Japanse Gezichtsmassage',
+        'kobido.duration.label': 'Duurtijd:',
+        'kobido.duration.time': '90 minuten',
+        'kobido.intro': 'Laat je verwennen met een diepe, ontspannende en natuurlijk liftende gezichtsmassage',
+        'kobido.benefits.title': 'Voordelen:',
+        'kobido.benefits.collagen': 'Stimuleert collageen productie',
+        'kobido.benefits.elasticity': 'Verbetert huid-elasticiteit',
+        'kobido.benefits.wrinkles': 'Vermindert fijne lijntjes en rimpels',
+        'kobido.benefits.circulation': 'Activeert de lymfedrainage en bloedcirculatie',
+        'kobido.benefits.contour': 'Verbetert en lift gezichtscontour',
+        'kobido.benefits.relaxation': 'Pure ontspanning voor gezicht en geest',
+        'kobido.taping.title': 'Wat is gezichtstaping?',
+        'kobido.taping.desc1': 'Gezichtstaping is een techniek na de Kobido-massage waarbij speciale tapes op de huid worden aangebracht.',
+        'kobido.taping.desc2': 'Ze helpen om het liftend effect te behouden, spanningen te verminderen en de doorbloeding te verbeteren.',
+        'kobido.taping.desc3': 'Je huid blijft langer fris en stralend',
     },
     en: {
         // Navigation
@@ -80,10 +163,12 @@ const translations = {
         'nav.about': 'About Us',
         'nav.services': 'Services',
         'nav.prices': 'Prices',
+        'nav.kobido': 'Kobido',
+        'nav.appointments': 'Appointments',
         'nav.contact': 'Contact',
         
         // Home page
-        'home.title': 'Welcome to Be Beauty',
+        'home.title': 'Welcome to Be Beauty JS',
         'home.subtitle': 'Professional beauty treatments in a luxury environment',
         'home.cta': 'Learn More',
         'home.features.title': 'Our Services',
@@ -93,12 +178,14 @@ const translations = {
         'home.feature2.desc': 'Classic, volume and mega volume eyelash extensions for a perfect look.',
         'home.feature3.title': 'Kobido Massage',
         'home.feature3.desc': 'Japanese facial massage for natural rejuvenation and relaxation.',
+        'home.feature4.title': 'Nails',
+        'home.feature4.desc': 'Professional nail treatments, from gel polish to artificial nails with extensions.',
         
         // About page
-        'about.title': 'About Be Beauty',
-        'about.intro': 'Welcome to Be Beauty! We specialize in professional beauty treatments with a personal touch.',
+        'about.title': 'About Be Beauty JS',
+        'about.intro': 'Welcome to Be Beauty JS! We specialize in professional beauty treatments with a personal touch.',
         'about.mission.title': 'Our Mission',
-        'about.mission.text': 'At Be Beauty we believe in enhancing natural beauty. We offer high-quality treatments in a relaxed, luxurious environment. Our experienced specialists use only the best products and techniques to give you the best results.',
+        'about.mission.text': 'At Be Beauty JS we believe in enhancing natural beauty. We offer high-quality treatments in a relaxed, luxurious environment. Our experienced specialists use only the best products and techniques to give you the best results.',
         'about.services.title': 'What We Offer',
         'about.services.intro': 'Our salon offers a wide range of professional beauty treatments:',
         'about.services.pmu': 'Permanent Make-up - Eyebrows, Eyeliner and Lips',
@@ -134,6 +221,7 @@ const translations = {
         'contact.info.email': 'Email',
         'contact.info.phone': 'Phone',
         'contact.info.address': 'Address',
+        'contact.info.preferred': 'Preferred contact',
         'contact.info.social': 'Follow Us',
         
         // Calendar
@@ -141,12 +229,90 @@ const translations = {
         'calendar.subtitle': 'View our availability for the next 30 days',
         'calendar.available': 'Available',
         'calendar.booked': 'Booked',
-        'calendar.closed': 'Closed',
+        'calendar.no_appointments': 'No available appointments',
         'calendar.error': 'There was a problem loading appointments.',
         
         // Footer
         'footer.rights': 'All rights reserved',
         'footer.follow': 'Follow us',
+        
+        // Price list categories
+        'pricelist.category.pmu': 'Permanent Make-up',
+        'pricelist.category.lashes': 'Eyelash Extensions',
+        'pricelist.category.brows': 'Eyebrows & Lashes',
+        'pricelist.category.nails': 'Nails',
+        'pricelist.category.kobido': 'Kobido Massage',
+        
+        // PMU Services
+        'pricelist.service.powder_brows': 'Powder / Ombre brows',
+        'pricelist.service.powder_brows_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.powder_brows_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.powder_brows_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.powder_brows_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.lips': 'Full / Ombre / Baby lips',
+        'pricelist.service.lips_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.lips_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.lips_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.lips_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.eyeliner': 'Eyeliner / Shadowliner',
+        'pricelist.service.eyeliner_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.eyeliner_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.eyeliner_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.eyeliner_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.deepliner': 'Deepliner',
+        'pricelist.service.deepliner_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.deepliner_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.deepliner_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.deepliner_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.deepliner_both': 'Deepliner Upper - Lower',
+        
+        // Lash Extensions
+        'pricelist.service.one_by_one': 'New set one by one',
+        'pricelist.service.one_by_one_refill': 'Refill within 4 weeks',
+        'pricelist.service.light_volume': 'New set light volume',
+        'pricelist.service.light_volume_refill': 'Refill within 4 weeks',
+        'pricelist.service.russe_volume': 'New set russe volume',
+        'pricelist.service.russe_volume_refill': 'Refill within 4 weeks',
+        'pricelist.service.mega_volume': 'New set mega/extreme volume',
+        'pricelist.service.mega_volume_refill': 'Refill within 4 weeks',
+        'pricelist.service.removal': 'Eyelash extensions removal',
+        
+        // Brows & Lashes
+        'pricelist.service.lash_lift': 'Lash lift',
+        'pricelist.service.lash_lift_tint': 'Lash lift + tint',
+        'pricelist.service.brow_lamination': 'Brow lamination',
+        'pricelist.service.brow_lamination_wax_tint': 'Brow lamination + wax & tint',
+        'pricelist.service.brow_wax': 'Brow wax',
+        'pricelist.service.brow_wax_tint': 'Brow wax & tint',
+        
+        // Nails
+        'pricelist.service.gel_extension': 'New set gel nails with extension',
+        'pricelist.service.gel_refill': 'Gel refill',
+        'pricelist.service.gel_biab': 'Gel / Biab on natural nails',
+        'pricelist.service.gel_polish': 'Gel polish on natural nails',
+        'pricelist.service.gel_removal': 'Gel nails removal',
+        'pricelist.service.gel_removal_manicure': 'Gel nails removal & mini manicure',
+        
+        // Kobido
+        'pricelist.service.massage': 'Kobido massage',
+        
+        // Kobido page
+        'kobido.title': 'KOBIDO UP',
+        'kobido.subtitle': 'Japanese Facial Massage',
+        'kobido.duration.label': 'Duration:',
+        'kobido.duration.time': '90 minutes',
+        'kobido.intro': 'Let yourself be pampered with a deep, relaxing and naturally lifting facial massage',
+        'kobido.benefits.title': 'Benefits:',
+        'kobido.benefits.collagen': 'Stimulates collagen production',
+        'kobido.benefits.elasticity': 'Improves skin elasticity',
+        'kobido.benefits.wrinkles': 'Reduces fine lines and wrinkles',
+        'kobido.benefits.circulation': 'Activates lymphatic drainage and blood circulation',
+        'kobido.benefits.contour': 'Improves and lifts facial contour',
+        'kobido.benefits.relaxation': 'Pure relaxation for face and mind',
+        'kobido.taping.title': 'What is facial taping?',
+        'kobido.taping.desc1': 'Facial taping is a technique after the Kobido massage where special tapes are applied to the skin.',
+        'kobido.taping.desc2': 'They help maintain the lifting effect, reduce tension and improve blood circulation.',
+        'kobido.taping.desc3': 'Your skin stays fresh and radiant longer',
     },
     pl: {
         // Navigation
@@ -154,10 +320,12 @@ const translations = {
         'nav.about': 'O Nas',
         'nav.services': 'Usługi',
         'nav.prices': 'Cennik',
+        'nav.kobido': 'Kobido',
+        'nav.appointments': 'Spotkania',
         'nav.contact': 'Kontakt',
         
         // Home page
-        'home.title': 'Witamy w Be Beauty',
+        'home.title': 'Witamy w Be Beauty JS',
         'home.subtitle': 'Profesjonalne zabiegi kosmetyczne w luksusowym środowisku',
         'home.cta': 'Dowiedz Się Więcej',
         'home.features.title': 'Nasze Usługi',
@@ -167,12 +335,14 @@ const translations = {
         'home.feature2.desc': 'Przedłużanie rzęs metodą klasyczną, volume i mega volume dla idealnego wyglądu.',
         'home.feature3.title': 'Masaż Kobido',
         'home.feature3.desc': 'Japoński masaż twarzy dla naturalnego odmłodzenia i relaksu.',
+        'home.feature4.title': 'Paznokcie',
+        'home.feature4.desc': 'Profesjonalne zabiegi na paznokcie, od lakieru hybrydowego po sztuczne paznokcie z przedłużeniem.',
         
         // About page
-        'about.title': 'O Be Beauty',
-        'about.intro': 'Witamy w Be Beauty! Specjalizujemy się w profesjonalnych zabiegach kosmetycznych z osobistym podejściem.',
+        'about.title': 'O Be Beauty JS',
+        'about.intro': 'Witamy w Be Beauty JS! Specjalizujemy się w profesjonalnych zabiegach kosmetycznych z osobistym podejściem.',
         'about.mission.title': 'Nasza Misja',
-        'about.mission.text': 'W Be Beauty wierzymy w podkreślanie naturalnego piękna. Oferujemy wysokiej jakości zabiegi w relaksującej, luksusowej atmosferze. Nasi doświadczeni specjaliści używają tylko najlepszych produktów i technik, aby zapewnić Ci najlepsze rezultaty.',
+        'about.mission.text': 'W Be Beauty JS wierzymy w podkreślanie naturalnego piękna. Oferujemy wysokiej jakości zabiegi w relaksującej, luksusowej atmosferze. Nasi doświadczeni specjaliści używają tylko najlepszych produktów i technik, aby zapewnić Ci najlepsze rezultaty.',
         'about.services.title': 'Co Oferujemy',
         'about.services.intro': 'Nasz salon oferuje szeroki zakres profesjonalnych zabiegów kosmetycznych:',
         'about.services.pmu': 'Makijaż Permanentny - Brwi, Eyeliner i Usta',
@@ -208,6 +378,7 @@ const translations = {
         'contact.info.email': 'E-mail',
         'contact.info.phone': 'Telefon',
         'contact.info.address': 'Adres',
+        'contact.info.preferred': 'Preferowany kontakt',
         'contact.info.social': 'Obserwuj Nas',
         
         // Calendar
@@ -215,12 +386,90 @@ const translations = {
         'calendar.subtitle': 'Zobacz naszą dostępność na najbliższe 30 dni',
         'calendar.available': 'Dostępny',
         'calendar.booked': 'Zajęty',
-        'calendar.closed': 'Zamknięte',
+        'calendar.no_appointments': 'Brak dostępnych terminów',
         'calendar.error': 'Wystąpił problem z załadowaniem terminów.',
         
         // Footer
         'footer.rights': 'Wszelkie prawa zastrzeżone',
         'footer.follow': 'Obserwuj nas',
+        
+        // Price list categories
+        'pricelist.category.pmu': 'Makijaż Permanentny',
+        'pricelist.category.lashes': 'Przedłużanie Rzęs',
+        'pricelist.category.brows': 'Brwi & Rzęsy',
+        'pricelist.category.nails': 'Paznokcie',
+        'pricelist.category.kobido': 'Masaż Kobido',
+        
+        // PMU Services
+        'pricelist.service.powder_brows': 'Powder / Ombre brwi',
+        'pricelist.service.powder_brows_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.powder_brows_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.powder_brows_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.powder_brows_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.lips': 'Full / Ombre / Baby usta',
+        'pricelist.service.lips_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.lips_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.lips_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.lips_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.eyeliner': 'Eyeliner / Shadowliner',
+        'pricelist.service.eyeliner_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.eyeliner_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.eyeliner_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.eyeliner_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.deepliner': 'Deepliner',
+        'pricelist.service.deepliner_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.deepliner_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.deepliner_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.deepliner_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.deepliner_both': 'Deepliner Górna - Dolna',
+        
+        // Lash Extensions
+        'pricelist.service.one_by_one': 'Nowy zestaw one by one',
+        'pricelist.service.one_by_one_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.light_volume': 'Nowy zestaw light volume',
+        'pricelist.service.light_volume_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.russe_volume': 'Nowy zestaw russe volume',
+        'pricelist.service.russe_volume_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.mega_volume': 'Nowy zestaw mega/extreme volume',
+        'pricelist.service.mega_volume_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.removal': 'Usunięcie przedłużania rzęs',
+        
+        // Brows & Lashes
+        'pricelist.service.lash_lift': 'Laminacja rzęs',
+        'pricelist.service.lash_lift_tint': 'Laminacja rzęs + farbowanie',
+        'pricelist.service.brow_lamination': 'Laminacja brwi',
+        'pricelist.service.brow_lamination_wax_tint': 'Laminacja brwi + woskiem & farbowanie',
+        'pricelist.service.brow_wax': 'Regulacja brwi woskiem',
+        'pricelist.service.brow_wax_tint': 'Regulacja brwi woskiem & farbowanie',
+        
+        // Nails
+        'pricelist.service.gel_extension': 'Nowy zestaw żelowych paznokci z przedłużeniem',
+        'pricelist.service.gel_refill': 'Uzupełnienie żelowe',
+        'pricelist.service.gel_biab': 'Żel / Biab na naturalne paznokcie',
+        'pricelist.service.gel_polish': 'Lakier żelowy na naturalne paznokcie',
+        'pricelist.service.gel_removal': 'Usunięcie żelowych paznokci',
+        'pricelist.service.gel_removal_manicure': 'Usunięcie żelowych paznokci & mini manicure',
+        
+        // Kobido
+        'pricelist.service.massage': 'Masaż Kobido',
+        
+        // Kobido page
+        'kobido.title': 'KOBIDO UP',
+        'kobido.subtitle': 'Japoński Masaż Twarzy',
+        'kobido.duration.label': 'Czas trwania:',
+        'kobido.duration.time': '90 minut',
+        'kobido.intro': 'Pozwól się rozpieszczać głębokim, relaksującym i naturalnie liftującym masażem twarzy',
+        'kobido.benefits.title': 'Korzyści:',
+        'kobido.benefits.collagen': 'Stymuluje produkcję kolagenu',
+        'kobido.benefits.elasticity': 'Poprawia elastyczność skóry',
+        'kobido.benefits.wrinkles': 'Zmniejsza drobne linie i zmarszczki',
+        'kobido.benefits.circulation': 'Aktywuje drenaż limfatyczny i krążenie krwi',
+        'kobido.benefits.contour': 'Poprawia i liftuje kontur twarzy',
+        'kobido.benefits.relaxation': 'Czysta relaksacja dla twarzy i umysłu',
+        'kobido.taping.title': 'Co to jest tapingowanie twarzy?',
+        'kobido.taping.desc1': 'Tapingowanie twarzy to technika po masażu Kobido, w której specjalne taśmy nakładane są na skórę.',
+        'kobido.taping.desc2': 'Pomagają one utrzymać efekt liftingujący, zmniejszyć napięcie i poprawić krążenie krwi.',
+        'kobido.taping.desc3': 'Twoja skóra pozostaje świeża i promienna dłużej',
     }
 };
 

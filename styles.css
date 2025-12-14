@@ -94,6 +94,11 @@ nav .container {
     font-family: 'Georgia', serif;
 }
 
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -161,7 +166,11 @@ nav .container {
     margin-bottom: 1rem;
     font-weight: 300;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                 0 0 20px rgba(255, 255, 255, 0.6),
+                 2px 2px 4px rgba(255, 255, 255, 0.4);
 }
 
 .hero p {
@@ -169,6 +178,7 @@ nav .container {
     margin-bottom: 2.5rem;
     font-weight: 300;
     letter-spacing: 1px;
+    color: #ffffff;
 }
 
 .btn {
@@ -321,7 +331,6 @@ button[type="submit"]:hover {
 footer {
     background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     color: var(--white);
-    text-align: center;
     padding: 3rem 0;
     margin-top: 5rem;
 }
@@ -331,6 +340,32 @@ footer .container {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
+}
+
+footer .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+footer .footer-section h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+footer .footer-section p {
+    margin: 0.3rem 0;
+}
+
+footer .footer-section a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+footer .footer-section a:hover {
+    text-decoration: underline;
 }
 
 footer .social-links {
@@ -666,5 +701,127 @@ footer .social-links a:hover {
     
     .calendar-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Kobido page styles */
+.kobido-content {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.kobido-text {
+    padding-right: 1rem;
+}
+
+.kobido-text h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.kobido-text h2 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.kobido-text h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.kobido-text .duration {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.kobido-text .intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+.benefits-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+.benefits-list li {
+    padding: 0.8rem 0;
+    padding-left: 2rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.benefits-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.kobido-image {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+}
+
+.kobido-image img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments for Kobido */
+@media (max-width: 1024px) {
+    .kobido-content {
+        grid-template-columns: 1fr 300px;
+        gap: 2rem;
+    }
+    
+    .kobido-image img {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .kobido-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .kobido-image {
+        position: relative;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+    
+    .kobido-image img {
+        max-width: 100%;
+    }
+    
+    .kobido-text {
+        padding-right: 0;
     }
 }
