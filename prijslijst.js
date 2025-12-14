@@ -20,9 +20,10 @@ function parseCSV(csvText) {
         const row = {};
         
         headers.forEach((header, index) => {
-            row[header] = values[index] ? values[index].trim() : '';
+            const cleanHeader = header.trim().replace(/"/g, '');
+            row[cleanHeader] = values[index] ? values[index].trim() : '';
         });
-        
+
         data.push(row);
     }
     
@@ -97,9 +98,9 @@ function displayPriceList() {
                     console.warn('Skipping item with missing ServiceKey:', item);
                     return;
                 }
-                
+
                 const serviceName = tSafe(`pricelist.service.${serviceKey}`);
-                const level = parseInt(item.Level) || 2;
+                const level = item.Level;
                 
                 html += `
                     <div class="price-item level-${level}">

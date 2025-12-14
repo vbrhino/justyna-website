@@ -97,8 +97,17 @@ nav .container {
 }
 
 .logo img {
-    height: 50px;
+    height: 100px;
     width: auto;
+    border-radius: 50px;
+    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
 }
 
 .nav-menu {
@@ -346,7 +355,6 @@ footer .container {
 
 footer .footer-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     width: 100%;
     text-align: center;
@@ -372,6 +380,11 @@ footer .footer-section a:hover {
 
 footer .social-links {
     justify-content: center;
+}
+
+footer .social-links span {
+    display: inline-flex;
+    align-items: center;
 }
 
 footer .social-links a {

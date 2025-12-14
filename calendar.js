@@ -33,7 +33,8 @@ function parseAppointmentsCSV(csvText) {
         const row = {};
         
         headers.forEach((header, index) => {
-            row[header] = values[index] ? values[index].trim() : '';
+            const cleanHeader = header.trim().replace(/"/g, '');
+            row[cleanHeader] = values[index] ? values[index].trim() : '';
         });
         
         data.push(row);
