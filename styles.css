@@ -212,6 +212,35 @@ footer {
     margin-top: 4rem;
 }
 
+/* Section Heading */
+.section-heading {
+    margin-top: 2rem;
+    color: var(--primary-color);
+}
+
+/* Feature List */
+.feature-list {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    line-height: 2;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin-top: 2rem;
+}
+
+/* Contact Info */
+.contact-info {
+    margin-top: 3rem;
+}
+
+.contact-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     nav .container {
