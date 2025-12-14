@@ -333,6 +333,108 @@ footer .social-links a:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Calendar Styles */
+.calendar-section {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 2px solid #eee;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.calendar-day {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.calendar-day:hover {
+    transform: translateY(-2px);
+}
+
+.calendar-day.has-availability {
+    border-top: 3px solid var(--primary-color);
+}
+
+.calendar-day.no-availability {
+    border-top: 3px solid #ccc;
+    opacity: 0.7;
+}
+
+.calendar-day-header {
+    background-color: var(--light-bg);
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.day-name {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.day-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0.2rem 0;
+}
+
+.month-name {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.calendar-day-body {
+    padding: 0.8rem;
+}
+
+.time-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.time-slot {
+    display: block;
+    padding: 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.time-slot.available {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+.time-slot.booked {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef5350;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.no-slots {
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0;
+}
+
 /* Social Media Links */
 .social-links {
     display: flex;
@@ -416,6 +518,10 @@ footer .social-links a:hover {
     .feature-grid {
         grid-template-columns: 1fr;
     }
+    
+    .calendar-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
 }
 
 @media (max-width: 480px) {
@@ -433,5 +539,9 @@ footer .social-links a:hover {
 
     section {
         padding: 2rem 0;
+    }
+    
+    .calendar-grid {
+        grid-template-columns: 1fr;
     }
 }

@@ -62,6 +62,14 @@ const translations = {
         'contact.info.address': 'Adres',
         'contact.info.social': 'Volg Ons',
         
+        // Calendar
+        'calendar.title': 'Beschikbare Afspraken',
+        'calendar.subtitle': 'Bekijk onze beschikbaarheid voor de komende 30 dagen',
+        'calendar.available': 'Beschikbaar',
+        'calendar.booked': 'Bezet',
+        'calendar.closed': 'Gesloten',
+        'calendar.error': 'Er is een probleem opgetreden bij het laden van de afspraken.',
+        
         // Footer
         'footer.rights': 'Alle rechten voorbehouden',
         'footer.follow': 'Volg ons',
@@ -128,6 +136,14 @@ const translations = {
         'contact.info.address': 'Address',
         'contact.info.social': 'Follow Us',
         
+        // Calendar
+        'calendar.title': 'Available Appointments',
+        'calendar.subtitle': 'View our availability for the next 30 days',
+        'calendar.available': 'Available',
+        'calendar.booked': 'Booked',
+        'calendar.closed': 'Closed',
+        'calendar.error': 'There was a problem loading appointments.',
+        
         // Footer
         'footer.rights': 'All rights reserved',
         'footer.follow': 'Follow us',
@@ -193,6 +209,14 @@ const translations = {
         'contact.info.phone': 'Telefon',
         'contact.info.address': 'Adres',
         'contact.info.social': 'Obserwuj Nas',
+        
+        // Calendar
+        'calendar.title': 'Dostępne Terminy',
+        'calendar.subtitle': 'Zobacz naszą dostępność na najbliższe 30 dni',
+        'calendar.available': 'Dostępny',
+        'calendar.booked': 'Zajęty',
+        'calendar.closed': 'Zamknięte',
+        'calendar.error': 'Wystąpił problem z załadowaniem terminów.',
         
         // Footer
         'footer.rights': 'Wszelkie prawa zastrzeżone',

@@ -8,6 +8,7 @@ Een moderne, meertalige website voor Be Beauty schoonheidssalon met dynamische p
 - 📱 **Responsive Design** - Werkt perfect op alle apparaten (mobiel, tablet, desktop)
 - 💰 **Dynamische Prijslijst** - Prijzen worden geladen vanuit CSV bestanden
 - 📥 **Downloadbare Prijslijst** - Klanten kunnen de prijslijst downloaden als PDF
+- 📅 **Afsprakenkalender** - Toon beschikbare afspraken voor de komende 30 dagen (CSV-beheerd)
 - 🎨 **Modern CSS** - Gebruikt CSS Grid, Flexbox en CSS Variabelen
 - 🚀 **Snel & Lichtgewicht** - Geen frameworks of dependencies
 - ♿ **Toegankelijk** - Semantische HTML5 markup
@@ -30,13 +31,15 @@ justyna-website/
 ├── index.html              # Homepagina
 ├── about.html              # Over Ons pagina
 ├── prijzen.html            # Prijslijst pagina
-├── contact.html            # Contact pagina met formulier
+├── contact.html            # Contact pagina met formulier en afsprakenkalender
 ├── styles.css              # Hoofd stylesheet
 ├── translations.js         # Meertalige vertalingen
 ├── prijslijst.js          # Prijslijst functionaliteit
+├── calendar.js            # Afsprakenkalender functionaliteit
 ├── prijslijst-nl.csv      # Nederlandse prijzen
 ├── prijslijst-en.csv      # Engelse prijzen
 ├── prijslijst-pl.csv      # Poolse prijzen
+├── afspraken.csv          # Beschikbare afspraken (kalender)
 ├── .gitignore             # Git ignore bestand
 └── README.md              # Dit bestand
 ```
@@ -93,6 +96,28 @@ De prijslijst wordt dynamisch geladen vanuit CSV bestanden. Om prijzen te update
    ```
 
 4. Commit en push de wijzigingen - de website laadt automatisch de nieuwe prijzen
+
+## Afspraken Beheren
+
+De beschikbare afspraken worden weergegeven in een kalender op de contact pagina. Om afspraken te updaten:
+
+1. Open `afspraken.csv` in de GitHub repo
+
+2. Bewerk de beschikbaarheid voor elke datum en tijd:
+   ```csv
+   Date,Time,Available
+   2025-12-15,09:00,true
+   2025-12-15,10:00,false
+   ```
+
+3. Formaat:
+   - **Date**: Datum in YYYY-MM-DD formaat
+   - **Time**: Tijd in HH:MM formaat (24-uurs)
+   - **Available**: `true` voor beschikbaar, `false` voor bezet
+
+4. Commit en push de wijzigingen - de kalender toont automatisch de nieuwe beschikbaarheid
+
+**Tip**: De kalender toont automatisch de volgende 30 dagen vanaf vandaag. Voeg nieuwe data toe en verwijder oude om de kalender actueel te houden.
 
 ## Aanpassen
 
