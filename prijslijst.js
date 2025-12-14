@@ -1,6 +1,11 @@
 // Price list functionality
 let priceListData = [];
 
+// Safe translation function
+function tSafe(key) {
+    return (typeof t === 'function') ? t(key) : key;
+}
+
 // Parse CSV data
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n');
@@ -48,7 +53,7 @@ async function loadPriceList() {
     } catch (error) {
         console.error('Error loading price list:', error);
         document.getElementById('price-list-container').innerHTML = 
-            `<p>${t('prices.error')}</p>`;
+            `<p>${tSafe('prices.error')}</p>`;
     }
 }
 
@@ -67,9 +72,9 @@ function displayPriceList() {
                     <table>
                         <thead>
                             <tr>
-                                <th>${t('prices.table.treatment')}</th>
-                                <th>${t('prices.table.duration')}</th>
-                                <th>${t('prices.table.price')}</th>
+                                <th>${tSafe('prices.table.treatment')}</th>
+                                <th>${tSafe('prices.table.duration')}</th>
+                                <th>${tSafe('prices.table.price')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -107,7 +112,7 @@ function downloadPriceList() {
         <html lang="${currentLang || 'nl'}">
         <head>
             <meta charset="UTF-8">
-            <title>${t('prices.title')} - Be Beauty</title>
+            <title>${tSafe('prices.title')} - Be Beauty</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -152,11 +157,11 @@ function downloadPriceList() {
             </style>
         </head>
         <body>
-            <h1>${t('prices.title')} - Be Beauty</h1>
+            <h1>${tSafe('prices.title')} - Be Beauty</h1>
     `;
     
     Object.keys(grouped).forEach(category => {
-        html += `<h2>${category}</h2><table><thead><tr><th>${t('prices.table.treatment')}</th><th>${t('prices.table.duration')}</th><th>${t('prices.table.price')}</th></tr></thead><tbody>`;
+        html += `<h2>${category}</h2><table><thead><tr><th>${tSafe('prices.table.treatment')}</th><th>${tSafe('prices.table.duration')}</th><th>${tSafe('prices.table.price')}</th></tr></thead><tbody>`;
         
         grouped[category].forEach(item => {
             html += `<tr><td>${item.Service}</td><td>${item.Duration}</td><td class="price">${item.Price}</td></tr>`;
@@ -184,5 +189,10 @@ function downloadPriceList() {
 
 // Load price list when page loads
 if (document.getElementById('price-list-container')) {
-    loadPriceList();
+    // Wait for translations to load first
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            loadPriceList();
+        }, 100);
+    });
 }

@@ -1,41 +1,60 @@
-# Justyna Website
+# Be Beauty - Schoonheidssalon Website
 
-A modern, clean, and responsive public website built with pure HTML5 and CSS3.
+Een moderne, meertalige website voor Be Beauty schoonheidssalon met dynamische prijslijst.
 
 ## Features
 
-- 📱 **Responsive Design** - Works perfectly on all devices (mobile, tablet, desktop)
-- 🎨 **Modern CSS** - Uses CSS Grid, Flexbox, and CSS Variables
-- 🚀 **Fast & Lightweight** - No frameworks or dependencies
-- ♿ **Accessible** - Semantic HTML5 markup
-- 🎯 **Easy to Customize** - Clean code structure with CSS variables for theming
+- 🌐 **Meertalig** - Ondersteuning voor Nederlands, Engels en Pools
+- 📱 **Responsive Design** - Werkt perfect op alle apparaten (mobiel, tablet, desktop)
+- 💰 **Dynamische Prijslijst** - Prijzen worden geladen vanuit CSV bestanden
+- 📥 **Downloadbare Prijslijst** - Klanten kunnen de prijslijst downloaden als PDF
+- 🎨 **Modern CSS** - Gebruikt CSS Grid, Flexbox en CSS Variabelen
+- 🚀 **Snel & Lichtgewicht** - Geen frameworks of dependencies
+- ♿ **Toegankelijk** - Semantische HTML5 markup
+- 🎯 **Makkelijk aan te passen** - Overzichtelijke code structuur
 
-## Project Structure
+## Diensten
+
+Be Beauty biedt professionele schoonheidsbehandelingen:
+
+- **Permanent Make-up** - Wenkbrauwen, Eyeliner, Lippen
+- **Wimperextensions** - Classic, Volume, Mega Volume
+- **Wenkbrauwen & Wimpers** - Verven, Epileren, Liften, Lamineren
+- **Nagels** - Manicure, Gellak, Acryl/Gel Nagels
+- **Kobido Massage** - Japanse Gezichtsmassage
+
+## Project Structuur
 
 ```
 justyna-website/
-├── index.html          # Home page
-├── about.html          # About page
-├── contact.html        # Contact page with form
-├── styles.css          # Main stylesheet
-├── .gitignore          # Git ignore file
-└── README.md           # This file
+├── index.html              # Homepagina
+├── about.html              # Over Ons pagina
+├── prijzen.html            # Prijslijst pagina
+├── contact.html            # Contact pagina met formulier
+├── styles.css              # Hoofd stylesheet
+├── translations.js         # Meertalige vertalingen
+├── prijslijst.js          # Prijslijst functionaliteit
+├── prijslijst-nl.csv      # Nederlandse prijzen
+├── prijslijst-en.csv      # Engelse prijzen
+├── prijslijst-pl.csv      # Poolse prijzen
+├── .gitignore             # Git ignore bestand
+└── README.md              # Dit bestand
 ```
 
-## Getting Started
+## Aan de Slag
 
-### Viewing Locally
+### Lokaal Bekijken
 
-Simply open `index.html` in your web browser:
+Open simpelweg `index.html` in je webbrowser:
 
-1. Navigate to the project directory
-2. Double-click `index.html` or right-click and select "Open with" your preferred browser
+1. Navigeer naar de project directory
+2. Dubbelklik op `index.html` of rechtsklik en selecteer "Openen met" je favoriete browser
 
-### Using a Local Server (Recommended)
+### Lokale Server Gebruiken (Aanbevolen)
 
-For the best experience, use a local web server:
+Voor de beste ervaring, gebruik een lokale webserver:
 
-**Using Python:**
+**Met Python:**
 ```bash
 # Python 3
 python -m http.server 8000
@@ -44,68 +63,91 @@ python -m http.server 8000
 python -m SimpleHTTPServer 8000
 ```
 
-**Using Node.js (http-server):**
+**Met Node.js (http-server):**
 ```bash
 npx http-server -p 8000
 ```
 
-**Using PHP:**
+**Met PHP:**
 ```bash
 php -S localhost:8000
 ```
 
-Then open your browser and navigate to `http://localhost:8000`
+Open vervolgens je browser en ga naar `http://localhost:8000`
 
-## Customization
+## Prijslijst Updaten
 
-### Colors
+De prijslijst wordt dynamisch geladen vanuit CSV bestanden. Om prijzen te updaten:
 
-All colors are defined as CSS variables in `styles.css`. You can easily change the color scheme by modifying the `:root` section:
+1. Open het juiste CSV bestand in de GitHub repo:
+   - `prijslijst-nl.csv` voor Nederlands
+   - `prijslijst-en.csv` voor Engels
+   - `prijslijst-pl.csv` voor Pools
+
+2. Bewerk het CSV bestand direct in GitHub of lokaal
+
+3. Het formaat is:
+   ```csv
+   Category,Service,Duration,Price
+   Permanent Make-up,Wenkbrauwen - Powder brows,2-3 uur,€ 395
+   ```
+
+4. Commit en push de wijzigingen - de website laadt automatisch de nieuwe prijzen
+
+## Aanpassen
+
+### Kleuren
+
+Alle kleuren zijn gedefinieerd als CSS variabelen in `styles.css`. Je kunt het kleurenschema makkelijk aanpassen door de `:root` sectie te wijzigen:
 
 ```css
 :root {
-    --primary-color: #4a90e2;      /* Main brand color */
-    --secondary-color: #2c3e50;    /* Secondary color */
-    --accent-color: #e74c3c;       /* Accent color */
-    --text-color: #333;            /* Text color */
-    --light-bg: #f4f4f4;           /* Light background */
-    --white: #ffffff;              /* White */
+    --primary-color: #4a90e2;      /* Hoofd merk kleur */
+    --secondary-color: #2c3e50;    /* Secundaire kleur */
+    --accent-color: #e74c3c;       /* Accent kleur */
+    --text-color: #333;            /* Tekst kleur */
+    --light-bg: #f4f4f4;           /* Lichte achtergrond */
+    --white: #ffffff;              /* Wit */
 }
 ```
 
+### Vertalingen Toevoegen
+
+Om een nieuwe taal toe te voegen:
+
+1. Voeg een nieuwe taalcode toe aan het `translations` object in `translations.js`
+2. Maak een nieuw CSV bestand voor de prijzen (bijv. `prijslijst-de.csv` voor Duits)
+3. Voeg een taalknop toe aan de navigatie in alle HTML bestanden
+
 ### Layout
 
-The website uses a container-based layout with a max-width of 1200px. You can adjust this in the `.container` class in `styles.css`.
+De website gebruikt een container-gebaseerde layout met een max-width van 1200px. Je kunt dit aanpassen in de `.container` class in `styles.css`.
 
-### Adding New Pages
+## Social Media
 
-1. Copy one of the existing HTML files (e.g., `about.html`)
-2. Modify the content within the `<main>` section
-3. Update the page title and meta description in the `<head>`
-4. Add a link to the new page in the navigation menu of all pages
+Be Beauty is te vinden op:
+- Instagram: [@js.bebeauty](https://www.instagram.com/js.bebeauty)
+- Facebook: [BeBeautySmugaJustyna](https://www.facebook.com/BeBeautySmugaJustyna)
+- TikTok: [@bebeauty.js](https://www.tiktok.com/@bebeauty.js)
 
 ## Deployment
 
-This website can be deployed to any static hosting service:
+Deze website kan gedeployed worden naar elke statische hosting service:
 
-- **GitHub Pages**: Push to a GitHub repository and enable GitHub Pages
-- **Netlify**: Drag and drop the folder or connect your repository
-- **Vercel**: Connect your repository or use the CLI
-- **Firebase Hosting**: Use Firebase CLI to deploy
-- **Any web server**: Upload files via FTP/SFTP
+- **GitHub Pages**: Push naar een GitHub repository en activeer GitHub Pages
+- **Netlify**: Drag and drop de folder of verbind je repository
+- **Vercel**: Verbind je repository of gebruik de CLI
+- **Firebase Hosting**: Gebruik Firebase CLI om te deployen
+- **Elke webserver**: Upload bestanden via FTP/SFTP
 
-## Browser Support
+## Browser Ondersteuning
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome for Android)
+- Chrome (laatste versie)
+- Firefox (laatste versie)
+- Safari (laatste versie)
+- Edge (laatste versie)
+- Mobiele browsers (iOS Safari, Chrome voor Android)
 
-## License
+## Licentie
 
-This project is open source and available for anyone to use and modify.
-
-## Contributing
-
-Feel free to fork this project and customize it for your needs!
+Dit project is open source en beschikbaar voor iedereen om te gebruiken en aan te passen.
