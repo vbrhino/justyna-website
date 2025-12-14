@@ -6,6 +6,7 @@ const translations = {
         'nav.about': 'Over Ons',
         'nav.services': 'Diensten',
         'nav.prices': 'Prijzen',
+        'nav.appointments': 'Afspraken',
         'nav.contact': 'Contact',
         
         // Home page
@@ -69,7 +70,7 @@ const translations = {
         'calendar.subtitle': 'Bekijk onze beschikbaarheid voor de komende 30 dagen',
         'calendar.available': 'Beschikbaar',
         'calendar.booked': 'Bezet',
-        'calendar.closed': 'Gesloten',
+        'calendar.no_appointments': 'Geen beschikbare afspraken',
         'calendar.error': 'Er is een probleem opgetreden bij het laden van de afspraken.',
         
         // Footer
@@ -142,6 +143,7 @@ const translations = {
         'nav.about': 'About Us',
         'nav.services': 'Services',
         'nav.prices': 'Prices',
+        'nav.appointments': 'Appointments',
         'nav.contact': 'Contact',
         
         // Home page
@@ -205,7 +207,7 @@ const translations = {
         'calendar.subtitle': 'View our availability for the next 30 days',
         'calendar.available': 'Available',
         'calendar.booked': 'Booked',
-        'calendar.closed': 'Closed',
+        'calendar.no_appointments': 'No available appointments',
         'calendar.error': 'There was a problem loading appointments.',
         
         // Footer
@@ -278,6 +280,7 @@ const translations = {
         'nav.about': 'O Nas',
         'nav.services': 'Usługi',
         'nav.prices': 'Cennik',
+        'nav.appointments': 'Spotkania',
         'nav.contact': 'Kontakt',
         
         // Home page
@@ -341,7 +344,7 @@ const translations = {
         'calendar.subtitle': 'Zobacz naszą dostępność na najbliższe 30 dni',
         'calendar.available': 'Dostępny',
         'calendar.booked': 'Zajęty',
-        'calendar.closed': 'Zamknięte',
+        'calendar.no_appointments': 'Brak dostępnych terminów',
         'calendar.error': 'Wystąpił problem z załadowaniem terminów.',
         
         // Footer

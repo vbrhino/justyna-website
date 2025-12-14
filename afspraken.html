@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Over Be Beauty - Professionele schoonheidssalon">
+    <meta name="description" content="Beschikbare Afspraken Be Beauty - Boek uw behandeling">
     <meta name="author" content="Be Beauty">
-    <title>Over Ons - Be Beauty</title>
+    <title>Afspraken - Be Beauty</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body data-page="about">
+<body data-page="calendar">
     <header>
         <nav>
             <div class="container">
@@ -27,9 +27,9 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" data-i18n="nav.home">Home</a></li>
-                    <li><a href="about.html" class="active" data-i18n="nav.about">Over Ons</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">Over Ons</a></li>
                     <li><a href="prijzen.html" data-i18n="nav.prices">Prijzen</a></li>
-                    <li><a href="afspraken.html" data-i18n="nav.appointments">Afspraken</a></li>
+                    <li><a href="afspraken.html" class="active" data-i18n="nav.appointments">Afspraken</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
@@ -39,24 +39,12 @@
     <main>
         <section>
             <div class="container">
-                <h2 data-i18n="about.title">Over Be Beauty</h2>
-                <p data-i18n="about.intro">Welkom bij Be Beauty! Wij zijn gespecialiseerd in professionele schoonheidsbehandelingen met een persoonlijke touch.</p>
+                <h2 data-i18n="calendar.title">Beschikbare Afspraken</h2>
+                <p data-i18n="calendar.subtitle">Bekijk onze beschikbaarheid voor de komende 30 dagen</p>
                 
-                <h3 class="section-heading" data-i18n="about.mission.title">Onze Missie</h3>
-                <p data-i18n="about.mission.text">Bij Be Beauty geloven we in het versterken van natuurlijke schoonheid. We bieden hoogwaardige behandelingen in een ontspannen, luxe omgeving. Onze ervaren specialisten gebruiken alleen de beste producten en technieken om jou het beste resultaat te geven.</p>
-                
-                <h3 class="section-heading" data-i18n="about.services.title">Wat We Aanbieden</h3>
-                <p data-i18n="about.services.intro">Onze salon biedt een breed scala aan professionele schoonheidsbehandelingen:</p>
-                <ul class="feature-list">
-                    <li data-i18n="about.services.pmu">Permanent Make-up - Wenkbrauwen, Eyeliner en Lippen</li>
-                    <li data-i18n="about.services.lashes">Wimperextensions - Classic, Volume en Mega Volume</li>
-                    <li data-i18n="about.services.brows">Wenkbrauwen & Wimpers - Verven, Epileren, Liften, Lamineren</li>
-                    <li data-i18n="about.services.nails">Nagels - Manicure, Gellak, Acryl/Gel Nagels</li>
-                    <li data-i18n="about.services.kobido">Kobido Massage - Japanse Gezichtsmassage</li>
-                </ul>
-                
-                <h3 class="section-heading" data-i18n="about.contact.title">Kom Langs</h3>
-                <p data-i18n="about.contact.text">We nodigen je graag uit om onze salon te bezoeken voor een persoonlijk consult. Ontdek hoe we jouw natuurlijke schoonheid kunnen versterken.</p>
+                <div id="calendar-container">
+                    <!-- Calendar will be dynamically loaded here -->
+                </div>
             </div>
         </section>
     </main>
@@ -74,5 +62,6 @@
     </footer>
     
     <script src="translations.js"></script>
+    <script src="calendar.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ function tSafe(key) {
     // Fallback translations
     const fallbacks = {
         'calendar.error': 'Error loading appointments.',
-        'calendar.closed': 'Closed'
+        'calendar.no_appointments': 'No available appointments'
     };
     return fallbacks[key] || key;
 }
@@ -153,7 +153,7 @@ function displayCalendar() {
             });
             html += '</div>';
         } else {
-            html += `<p class="no-slots">${tSafe('calendar.closed')}</p>`;
+            html += `<p class="no-slots">${tSafe('calendar.no_appointments')}</p>`;
         }
         
         html += `
