@@ -1,6 +1,24 @@
 // Appointment calendar functionality
 let appointmentsData = [];
 
+// Safe translation function - fallback if not loaded
+function tSafe(key) {
+    if (typeof t === 'function') {
+        return t(key);
+    }
+    // Fallback translations
+    const fallbacks = {
+        'calendar.error': 'Error loading appointments.',
+        'calendar.closed': 'Closed'
+    };
+    return fallbacks[key] || key;
+}
+
+// Get current language safely
+function getCurrentLang() {
+    return (typeof currentLang !== 'undefined') ? currentLang : 'nl';
+}
+
 // Parse CSV data for appointments
 function parseAppointmentsCSV(csvText) {
     const lines = csvText.trim().split('\n').filter(line => line.trim());
@@ -73,7 +91,7 @@ function getMonthName(monthIndex) {
         en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         pl: ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień']
     };
-    const lang = currentLang || 'nl';
+    const lang = getCurrentLang();
     return months[lang][monthIndex];
 }
 
@@ -84,7 +102,7 @@ function getDayName(dayIndex) {
         en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         pl: ['nie', 'pon', 'wt', 'śr', 'czw', 'pt', 'sob']
     };
-    const lang = currentLang || 'nl';
+    const lang = getCurrentLang();
     return days[lang][dayIndex];
 }
 
