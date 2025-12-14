@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Be Beauty">
+    <meta name="author" content="Be Beauty">
+    <title>Contact - Be Beauty</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body data-page="contact">
+    <header>
+        <nav>
+            <div class="container">
+                <div class="nav-left">
+                    <div class="logo">
+                        <h1>Be Beauty</h1>
+                    </div>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="nl" onclick="changeLanguage('nl')">NL</button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+                        <button class="lang-btn" data-lang="pl" onclick="changeLanguage('pl')">PL</button>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">Over Ons</a></li>
+                    <li><a href="prijzen.html" data-i18n="nav.prices">Prijzen</a></li>
+                    <li><a href="contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <h2 data-i18n="contact.title">Contact</h2>
+                <p data-i18n="contact.intro">Heb je vragen of wil je een afspraak maken? Vul het formulier in en we nemen zo snel mogelijk contact met je op.</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-i18n="contact.form.name">Naam</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" data-i18n="contact.form.email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" data-i18n="contact.form.subject">Onderwerp</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact.form.message">Bericht</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" data-i18n="contact.form.submit">Verzenden</button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3 data-i18n="contact.info.title">Andere Manieren om Ons te Bereiken</h3>
+                    <!-- TODO: Update with actual business contact information -->
+                    <p><strong data-i18n="contact.info.email">E-mail:</strong> info@bebeauty.com</p>
+                    <p><strong data-i18n="contact.info.phone">Telefoon:</strong> +31 6 12345678</p>
+                    <p><strong data-i18n="contact.info.address">Adres:</strong> Smuga, Nederland</p>
+                    <div class="social-links">
+                        <strong data-i18n="contact.info.social">Volg Ons:</strong>
+                        <a href="https://www.instagram.com/js.bebeauty" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/BeBeautySmugaJustyna" target="_blank">Facebook</a>
+                        <a href="https://www.tiktok.com/@bebeauty.js" target="_blank">TikTok</a>
+                    </div>
+                </div>
+                
+                <div class="calendar-section">
+                    <h2 data-i18n="calendar.title">Beschikbare Afspraken</h2>
+                    <p data-i18n="calendar.subtitle">Bekijk onze beschikbaarheid voor de komende 30 dagen</p>
+                    
+                    <div id="calendar-container">
+                        <!-- Calendar will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Be Beauty. <span data-i18n="footer.rights">Alle rechten voorbehouden</span></p>
+            <div class="social-links">
+                <span data-i18n="footer.follow">Volg ons:</span>
+                <a href="https://www.instagram.com/js.bebeauty" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/BeBeautySmugaJustyna" target="_blank">Facebook</a>
+                <a href="https://www.tiktok.com/@bebeauty.js" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="translations.js"></script>
+    <script src="calendar.js"></script>
+</body>
+</html>
