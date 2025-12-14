@@ -19,6 +19,8 @@ const translations = {
         'home.feature2.desc': 'Classic, volume en mega volume wimperextensions voor een perfecte look.',
         'home.feature3.title': 'Kobido Massage',
         'home.feature3.desc': 'Japanse gezichtsmassage voor natuurlijke verjonging en ontspanning.',
+        'home.feature4.title': 'Nagels',
+        'home.feature4.desc': 'Professionele nagelbehandelingen, van gellak tot kunstnagels met verlenging.',
         
         // About page
         'about.title': 'Over Be Beauty',
@@ -153,6 +155,8 @@ const translations = {
         'home.feature2.desc': 'Classic, volume and mega volume eyelash extensions for a perfect look.',
         'home.feature3.title': 'Kobido Massage',
         'home.feature3.desc': 'Japanese facial massage for natural rejuvenation and relaxation.',
+        'home.feature4.title': 'Nails',
+        'home.feature4.desc': 'Professional nail treatments, from gel polish to artificial nails with extensions.',
         
         // About page
         'about.title': 'About Be Beauty',
@@ -287,6 +291,8 @@ const translations = {
         'home.feature2.desc': 'Przedłużanie rzęs metodą klasyczną, volume i mega volume dla idealnego wyglądu.',
         'home.feature3.title': 'Masaż Kobido',
         'home.feature3.desc': 'Japoński masaż twarzy dla naturalnego odmłodzenia i relaksu.',
+        'home.feature4.title': 'Paznokcie',
+        'home.feature4.desc': 'Profesjonalne zabiegi na paznokcie, od lakieru hybrydowego po sztuczne paznokcie z przedłużeniem.',
         
         // About page
         'about.title': 'O Be Beauty',
