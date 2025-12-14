@@ -73,6 +73,66 @@ const translations = {
         // Footer
         'footer.rights': 'Alle rechten voorbehouden',
         'footer.follow': 'Volg ons',
+        
+        // Price list categories
+        'pricelist.category.pmu': 'Permanent Make-up',
+        'pricelist.category.lashes': 'Wimperextensions',
+        'pricelist.category.brows': 'Wenkbrauwen & Wimpers',
+        'pricelist.category.nails': 'Nagels',
+        'pricelist.category.kobido': 'Kobido Massage',
+        
+        // PMU Services
+        'pricelist.service.powder_brows': 'Powder / Ombre brows',
+        'pricelist.service.powder_brows_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.powder_brows_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.powder_brows_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.powder_brows_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.lips': 'Full / Ombre / Baby lips',
+        'pricelist.service.lips_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.lips_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.lips_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.lips_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.eyeliner': 'Eyeliner / Shadowliner',
+        'pricelist.service.eyeliner_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.eyeliner_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.eyeliner_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.eyeliner_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.deepliner': 'Deepliner',
+        'pricelist.service.deepliner_aftercare': 'Nabehandeling 4-8 weken',
+        'pricelist.service.deepliner_touchup_1y': 'Touch up binnen 1 jaar',
+        'pricelist.service.deepliner_touchup_1_2y': 'Touch up 1-2 jaar',
+        'pricelist.service.deepliner_touchup_2_3y': 'Touch up 2-3 jaar',
+        'pricelist.service.deepliner_both': 'Deepliner Boven - Onder',
+        
+        // Lash Extensions
+        'pricelist.service.one_by_one': 'Nieuwe set one by one',
+        'pricelist.service.one_by_one_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.light_volume': 'Nieuwe set light volume',
+        'pricelist.service.light_volume_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.russe_volume': 'Nieuwe set russe volume',
+        'pricelist.service.russe_volume_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.mega_volume': 'Nieuwe set mega/extreme volume',
+        'pricelist.service.mega_volume_refill': 'Bijwerking binnen 4 weken',
+        'pricelist.service.removal': 'Wimperextensions verwijderen',
+        
+        // Brows & Lashes
+        'pricelist.service.lash_lift': 'Wimperlift',
+        'pricelist.service.lash_lift_tint': 'Wimperlift + tint',
+        'pricelist.service.brow_lamination': 'Wenkbrauwen lamination',
+        'pricelist.service.brow_lamination_wax_tint': 'Wenkbrauwen lamination + wax & tint',
+        'pricelist.service.brow_wax': 'Wenkbrauwen wax',
+        'pricelist.service.brow_wax_tint': 'Wenkbrauwen wax & tint',
+        
+        // Nails
+        'pricelist.service.gel_extension': 'Nieuwe set gel nagels met verlenging',
+        'pricelist.service.gel_refill': 'Gel bijwerking',
+        'pricelist.service.gel_biab': 'Gel / Biab op eigen nagels',
+        'pricelist.service.gel_polish': 'Gellak op eigen nagels',
+        'pricelist.service.gel_removal': 'Verwijderen gel nagels',
+        'pricelist.service.gel_removal_manicure': 'Verwijderen gel nagels & mini manicure',
+        
+        // Kobido
+        'pricelist.service.massage': 'Kobido massage',
     },
     en: {
         // Navigation
@@ -147,6 +207,66 @@ const translations = {
         // Footer
         'footer.rights': 'All rights reserved',
         'footer.follow': 'Follow us',
+        
+        // Price list categories
+        'pricelist.category.pmu': 'Permanent Make-up',
+        'pricelist.category.lashes': 'Eyelash Extensions',
+        'pricelist.category.brows': 'Eyebrows & Lashes',
+        'pricelist.category.nails': 'Nails',
+        'pricelist.category.kobido': 'Kobido Massage',
+        
+        // PMU Services
+        'pricelist.service.powder_brows': 'Powder / Ombre brows',
+        'pricelist.service.powder_brows_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.powder_brows_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.powder_brows_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.powder_brows_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.lips': 'Full / Ombre / Baby lips',
+        'pricelist.service.lips_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.lips_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.lips_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.lips_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.eyeliner': 'Eyeliner / Shadowliner',
+        'pricelist.service.eyeliner_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.eyeliner_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.eyeliner_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.eyeliner_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.deepliner': 'Deepliner',
+        'pricelist.service.deepliner_aftercare': 'Aftercare 4-8 weeks',
+        'pricelist.service.deepliner_touchup_1y': 'Touch up within 1 year',
+        'pricelist.service.deepliner_touchup_1_2y': 'Touch up 1-2 years',
+        'pricelist.service.deepliner_touchup_2_3y': 'Touch up 2-3 years',
+        'pricelist.service.deepliner_both': 'Deepliner Upper - Lower',
+        
+        // Lash Extensions
+        'pricelist.service.one_by_one': 'New set one by one',
+        'pricelist.service.one_by_one_refill': 'Refill within 4 weeks',
+        'pricelist.service.light_volume': 'New set light volume',
+        'pricelist.service.light_volume_refill': 'Refill within 4 weeks',
+        'pricelist.service.russe_volume': 'New set russe volume',
+        'pricelist.service.russe_volume_refill': 'Refill within 4 weeks',
+        'pricelist.service.mega_volume': 'New set mega/extreme volume',
+        'pricelist.service.mega_volume_refill': 'Refill within 4 weeks',
+        'pricelist.service.removal': 'Eyelash extensions removal',
+        
+        // Brows & Lashes
+        'pricelist.service.lash_lift': 'Lash lift',
+        'pricelist.service.lash_lift_tint': 'Lash lift + tint',
+        'pricelist.service.brow_lamination': 'Brow lamination',
+        'pricelist.service.brow_lamination_wax_tint': 'Brow lamination + wax & tint',
+        'pricelist.service.brow_wax': 'Brow wax',
+        'pricelist.service.brow_wax_tint': 'Brow wax & tint',
+        
+        // Nails
+        'pricelist.service.gel_extension': 'New set gel nails with extension',
+        'pricelist.service.gel_refill': 'Gel refill',
+        'pricelist.service.gel_biab': 'Gel / Biab on natural nails',
+        'pricelist.service.gel_polish': 'Gel polish on natural nails',
+        'pricelist.service.gel_removal': 'Gel nails removal',
+        'pricelist.service.gel_removal_manicure': 'Gel nails removal & mini manicure',
+        
+        // Kobido
+        'pricelist.service.massage': 'Kobido massage',
     },
     pl: {
         // Navigation
@@ -221,6 +341,66 @@ const translations = {
         // Footer
         'footer.rights': 'Wszelkie prawa zastrzeżone',
         'footer.follow': 'Obserwuj nas',
+        
+        // Price list categories
+        'pricelist.category.pmu': 'Makijaż Permanentny',
+        'pricelist.category.lashes': 'Przedłużanie Rzęs',
+        'pricelist.category.brows': 'Brwi & Rzęsy',
+        'pricelist.category.nails': 'Paznokcie',
+        'pricelist.category.kobido': 'Masaż Kobido',
+        
+        // PMU Services
+        'pricelist.service.powder_brows': 'Powder / Ombre brwi',
+        'pricelist.service.powder_brows_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.powder_brows_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.powder_brows_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.powder_brows_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.lips': 'Full / Ombre / Baby usta',
+        'pricelist.service.lips_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.lips_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.lips_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.lips_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.eyeliner': 'Eyeliner / Shadowliner',
+        'pricelist.service.eyeliner_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.eyeliner_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.eyeliner_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.eyeliner_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.deepliner': 'Deepliner',
+        'pricelist.service.deepliner_aftercare': 'Korekta po 4-8 tygodniach',
+        'pricelist.service.deepliner_touchup_1y': 'Touch up w ciągu 1 roku',
+        'pricelist.service.deepliner_touchup_1_2y': 'Touch up 1-2 lata',
+        'pricelist.service.deepliner_touchup_2_3y': 'Touch up 2-3 lata',
+        'pricelist.service.deepliner_both': 'Deepliner Górna - Dolna',
+        
+        // Lash Extensions
+        'pricelist.service.one_by_one': 'Nowy zestaw one by one',
+        'pricelist.service.one_by_one_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.light_volume': 'Nowy zestaw light volume',
+        'pricelist.service.light_volume_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.russe_volume': 'Nowy zestaw russe volume',
+        'pricelist.service.russe_volume_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.mega_volume': 'Nowy zestaw mega/extreme volume',
+        'pricelist.service.mega_volume_refill': 'Uzupełnienie w ciągu 4 tygodni',
+        'pricelist.service.removal': 'Usunięcie przedłużania rzęs',
+        
+        // Brows & Lashes
+        'pricelist.service.lash_lift': 'Laminacja rzęs',
+        'pricelist.service.lash_lift_tint': 'Laminacja rzęs + farbowanie',
+        'pricelist.service.brow_lamination': 'Laminacja brwi',
+        'pricelist.service.brow_lamination_wax_tint': 'Laminacja brwi + woskiem & farbowanie',
+        'pricelist.service.brow_wax': 'Regulacja brwi woskiem',
+        'pricelist.service.brow_wax_tint': 'Regulacja brwi woskiem & farbowanie',
+        
+        // Nails
+        'pricelist.service.gel_extension': 'Nowy zestaw żelowych paznokci z przedłużeniem',
+        'pricelist.service.gel_refill': 'Uzupełnienie żelowe',
+        'pricelist.service.gel_biab': 'Żel / Biab na naturalne paznokcie',
+        'pricelist.service.gel_polish': 'Lakier żelowy na naturalne paznokcie',
+        'pricelist.service.gel_removal': 'Usunięcie żelowych paznokci',
+        'pricelist.service.gel_removal_manicure': 'Usunięcie żelowych paznokci & mini manicure',
+        
+        // Kobido
+        'pricelist.service.massage': 'Masaż Kobido',
     }
 };
 

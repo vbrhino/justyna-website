@@ -34,7 +34,7 @@ function groupByCategory(data) {
     const grouped = {};
     
     data.forEach(item => {
-        const category = item.Category;
+        const category = item.CategoryKey;
         if (!grouped[category]) {
             grouped[category] = [];
         }
@@ -47,8 +47,7 @@ function groupByCategory(data) {
 // Load and display price list
 async function loadPriceList() {
     try {
-        const lang = currentLang || 'nl';
-        const response = await fetch(`prijslijst-${lang}.csv`);
+        const response = await fetch('prijslijst.csv');
         const csvText = await response.text();
         priceListData = parseCSV(csvText);
         displayPriceList();
@@ -66,27 +65,27 @@ function displayPriceList() {
     
     let html = '';
     
-    Object.keys(grouped).forEach(category => {
+    Object.keys(grouped).forEach(categoryKey => {
+        const categoryName = tSafe(`pricelist.category.${categoryKey}`);
         html += `
             <div class="price-category">
-                <h3 class="category-title">${category}</h3>
+                <h3 class="category-title">${categoryName}</h3>
                 <div class="price-table">
                     <table>
                         <thead>
                             <tr>
                                 <th>${tSafe('prices.table.treatment')}</th>
-                                <th>${tSafe('prices.table.duration')}</th>
                                 <th>${tSafe('prices.table.price')}</th>
                             </tr>
                         </thead>
                         <tbody>
         `;
         
-        grouped[category].forEach(item => {
+        grouped[categoryKey].forEach(item => {
+            const serviceName = tSafe(`pricelist.service.${item.ServiceKey}`);
             html += `
                 <tr>
-                    <td>${item.Service}</td>
-                    <td>${item.Duration}</td>
+                    <td>${serviceName}</td>
                     <td class="price">${item.Price}</td>
                 </tr>
             `;
@@ -162,11 +161,13 @@ function downloadPriceList() {
             <h1>${tSafe('prices.title')} - Be Beauty</h1>
     `;
     
-    Object.keys(grouped).forEach(category => {
-        html += `<h2>${category}</h2><table><thead><tr><th>${tSafe('prices.table.treatment')}</th><th>${tSafe('prices.table.duration')}</th><th>${tSafe('prices.table.price')}</th></tr></thead><tbody>`;
+    Object.keys(grouped).forEach(categoryKey => {
+        const categoryName = tSafe(`pricelist.category.${categoryKey}`);
+        html += `<h2>${categoryName}</h2><table><thead><tr><th>${tSafe('prices.table.treatment')}</th><th>${tSafe('prices.table.price')}</th></tr></thead><tbody>`;
         
-        grouped[category].forEach(item => {
-            html += `<tr><td>${item.Service}</td><td>${item.Duration}</td><td class="price">${item.Price}</td></tr>`;
+        grouped[categoryKey].forEach(item => {
+            const serviceName = tSafe(`pricelist.service.${item.ServiceKey}`);
+            html += `<tr><td>${serviceName}</td><td class="price">${item.Price}</td></tr>`;
         });
         
         html += `</tbody></table>`;
