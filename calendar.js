@@ -52,7 +52,7 @@ function groupAppointmentsByDate(data) {
             grouped[date] = [];
         }
         grouped[date].push({
-            time: item.Time,
+            timeSlot: item.TimeSlot,  // Changed from 'time' to 'timeSlot'
             available: item.Available === 'true'
         });
     });
@@ -149,7 +149,7 @@ function displayCalendar() {
             html += '<div class="time-slots">';
             appointments.forEach(apt => {
                 const slotClass = apt.available ? 'available' : 'booked';
-                html += `<span class="time-slot ${slotClass}">${apt.time}</span>`;
+                html += `<span class="time-slot ${slotClass}">${apt.timeSlot}</span>`;  // Changed from apt.time to apt.timeSlot
             });
             html += '</div>';
         } else {

@@ -103,21 +103,21 @@ De beschikbare afspraken worden weergegeven in een kalender op de contact pagina
 
 1. Open `afspraken.csv` in de GitHub repo
 
-2. Bewerk de beschikbaarheid voor elke datum en tijd:
+2. Bewerk de beschikbaarheid voor elke datum en tijdslot:
    ```csv
-   Date,Time,Available
-   2025-12-15,09:00,true
-   2025-12-15,10:00,false
+   Date,TimeSlot,Available
+   2025-12-15,09:00-10:30,true
+   2025-12-15,13:00-15:00,false
    ```
 
 3. Formaat:
    - **Date**: Datum in YYYY-MM-DD formaat
-   - **Time**: Tijd in HH:MM formaat (24-uurs)
+   - **TimeSlot**: Tijdslot in HH:MM-HH:MM formaat (bijvoorbeeld: 09:00-10:30, 13:00-15:00)
    - **Available**: `true` voor beschikbaar, `false` voor bezet
 
 4. Commit en push de wijzigingen - de kalender toont automatisch de nieuwe beschikbaarheid
 
-**Tip**: De kalender toont automatisch de volgende 30 dagen vanaf vandaag. Voeg nieuwe data toe en verwijder oude om de kalender actueel te houden.
+**Tip**: De kalender toont automatisch de volgende 30 dagen vanaf vandaag. Voeg nieuwe data toe en verwijder oude om de kalender actueel te houden. Tijdslots kunnen variëren in duur (niet alles hoeft één uur te zijn).
 
 ## Aanpassen
 
