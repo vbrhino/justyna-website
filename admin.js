@@ -11,6 +11,36 @@ const GITHUB_REPO = 'justyna-website';
 const WORKFLOW_FILE = 'update-afspraken.yml';
 const DEFAULT_BRANCH = 'main'; // Change this if your default branch is different (e.g., 'master')
 
+// Populate time picker with business hours (8:00 - 20:00) in 30-minute intervals
+function populateTimePickers() {
+    const startSelect = document.getElementById('modal-time-start');
+    const endSelect = document.getElementById('modal-time-end');
+    
+    // Clear existing options except the first one
+    startSelect.innerHTML = '<option value="">Selecteer tijd...</option>';
+    endSelect.innerHTML = '<option value="">Selecteer tijd...</option>';
+    
+    // Generate times from 08:00 to 20:00 in 30-minute intervals
+    for (let hour = 8; hour <= 20; hour++) {
+        for (let minute = 0; minute < 60; minute += 30) {
+            // Skip 20:30 and beyond
+            if (hour === 20 && minute > 0) continue;
+            
+            const timeStr = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+            
+            const startOption = document.createElement('option');
+            startOption.value = timeStr;
+            startOption.textContent = timeStr;
+            startSelect.appendChild(startOption);
+            
+            const endOption = document.createElement('option');
+            endOption.value = timeStr;
+            endOption.textContent = timeStr;
+            endSelect.appendChild(endOption);
+        }
+    }
+}
+
 // Mark that there are unsaved changes
 function markUnsavedChanges() {
     hasUnsavedChanges = true;
@@ -262,6 +292,9 @@ let currentEditingId = null;
 function openAppointmentModal(id = null, prefilledDate = null) {
     const modal = document.getElementById('appointmentModal');
     const title = document.getElementById('modalTitle');
+    
+    // Populate time pickers
+    populateTimePickers();
     
     currentEditingId = id;
     

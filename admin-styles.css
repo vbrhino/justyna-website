@@ -542,3 +542,31 @@
 .close-modal:hover {
     color: #000;
 }
+
+/* Time Select Styling */
+.time-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.time-select:hover {
+    border-color: #999;
+}
+
+.time-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.time-select option {
+    padding: 0.5rem;
+    font-size: 1rem;
+}

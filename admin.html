@@ -91,16 +91,20 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="modal-date">Datum (YYYY-MM-DD):</label>
+                    <label for="modal-date">Datum:</label>
                     <input type="date" id="modal-date" required>
                 </div>
                 <div class="form-group">
-                    <label for="modal-time-start">Start tijd (HH:MM):</label>
-                    <input type="time" id="modal-time-start" required>
+                    <label for="modal-time-start">Start tijd:</label>
+                    <select id="modal-time-start" class="time-select" required>
+                        <option value="">Selecteer tijd...</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="modal-time-end">Eind tijd (HH:MM):</label>
-                    <input type="time" id="modal-time-end" required>
+                    <label for="modal-time-end">Eind tijd:</label>
+                    <select id="modal-time-end" class="time-select" required>
+                        <option value="">Selecteer tijd...</option>
+                    </select>
                 </div>
                 <div style="margin-top: 1.5rem;">
                     <button onclick="saveAppointmentFromModal()" class="btn-primary">Opslaan</button>
