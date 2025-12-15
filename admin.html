@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Panel - Beheer Afspraken">
+    <title>Admin - Afspraken Beheren</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body data-page="admin">
+    <header>
+        <nav>
+            <div class="container">
+                <div class="nav-left">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.jfif" alt="Be Beauty JS">
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="afspraken.html">Afspraken Bekijken</a></li>
+                    <li><a href="admin.html" class="active">Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <h1>🔐 Afspraken Beheren</h1>
+                
+                <!-- Authentication Section -->
+                <div id="auth-section" class="auth-section">
+                    <div class="auth-box">
+                        <h2>Authenticatie Vereist</h2>
+                        <p>Voer uw authenticatie token in om toegang te krijgen tot het admin panel.</p>
+                        <div class="form-group">
+                            <label for="auth-token">Authenticatie Token:</label>
+                            <input type="password" id="auth-token" placeholder="Voer token in">
+                        </div>
+                        <button onclick="authenticate()" class="btn-primary">Login</button>
+                        <div id="auth-error" class="error-message"></div>
+                    </div>
+                </div>
+
+                <!-- Admin Panel (hidden until authenticated) -->
+                <div id="admin-panel" class="admin-panel" style="display: none;">
+                    
+                    <!-- Action Buttons -->
+                    <div class="action-bar">
+                        <button onclick="addNewAppointment()" class="btn-success">➕ Nieuwe Afspraak Toevoegen</button>
+                        <button onclick="saveChanges()" class="btn-primary">💾 Wijzigingen Opslaan</button>
+                        <button onclick="cancelChanges()" class="btn-secondary">↩️ Annuleren</button>
+                        <button onclick="logout()" class="btn-danger" style="float: right;">🚪 Uitloggen</button>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>ℹ️ Instructies</h3>
+                        <ul>
+                            <li>Klik op een tijdslot om de beschikbaarheid aan te passen</li>
+                            <li>Gebruik "Nieuwe Afspraak Toevoegen" om een nieuw tijdslot te maken</li>
+                            <li>Klik op "Verwijderen" om een tijdslot te verwijderen</li>
+                            <li>Vergeet niet te klikken op "Wijzigingen Opslaan" om de updates toe te passen</li>
+                        </ul>
+                    </div>
+
+                    <!-- Status Messages -->
+                    <div id="status-message" class="status-message"></div>
+
+                    <!-- Appointments Table -->
+                    <div class="table-container">
+                        <h2>📅 Afspraken Overzicht</h2>
+                        <div class="filter-bar">
+                            <label for="filter-date">Filter op datum:</label>
+                            <input type="date" id="filter-date" onchange="filterAppointments()">
+                            <button onclick="clearFilter()" class="btn-secondary">Wis Filter</button>
+                        </div>
+                        <div id="appointments-table"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2026 Be Beauty JS. Alle rechten voorbehouden</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="admin.js"></script>
+</body>
+</html>

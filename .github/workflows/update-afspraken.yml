@@ -1,0 +1,49 @@
+name: Update Afspraken CSV
+
+on:
+  workflow_dispatch:
+    inputs:
+      csv_data:
+        description: 'CSV data for afspraken'
+        required: true
+        type: string
+      auth_token:
+        description: 'Authentication token'
+        required: true
+        type: string
+
+jobs:
+  update-csv:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Verify authentication
+        run: |
+          if [ "${{ github.event.inputs.auth_token }}" != "${{ secrets.ADMIN_AUTH_TOKEN }}" ]; then
+            echo "Authentication failed"
+            exit 1
+          fi
+          echo "Authentication successful"
+      
+      - name: Update afspraken.csv
+        run: |
+          echo '${{ github.event.inputs.csv_data }}' > afspraken.csv
+          echo "CSV file updated successfully"
+      
+      - name: Commit and push changes
+        run: |
+          git config user.name "Admin Bot"
+          git config user.email "admin@bebeauty.com"
+          git add afspraken.csv
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update afspraken.csv via admin UI"
+            git push
+            echo "Changes committed and pushed"
+          fi
