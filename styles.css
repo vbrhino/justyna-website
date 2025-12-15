@@ -39,6 +39,12 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Collapsed state for mobile */
+header.collapsed {
+    transform: translateY(-100%);
 }
 
 nav {
