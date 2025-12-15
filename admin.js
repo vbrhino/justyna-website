@@ -204,7 +204,7 @@ function displayAppointments() {
         html += `
             <div class="day-header">
                 <span class="day-date">📅 ${formatDate(date)}</span>
-                <span class="day-full-date">${date}</span>
+                <span class="day-full-date">${formatDateDDMMYYYY(date)}</span>
             </div>
         `;
         
@@ -262,6 +262,16 @@ function formatDate(dateStr) {
     const month = months[date.getMonth()];
     
     return `${dayName} ${day} ${month}`;
+}
+
+// Format date as dd/mm/yyyy (Belgium format)
+function formatDateDDMMYYYY(dateStr) {
+    const date = new Date(dateStr + 'T00:00:00');
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    
+    return `${day}/${month}/${year}`;
 }
 
 // Toggle availability
