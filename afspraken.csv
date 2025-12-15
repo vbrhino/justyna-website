@@ -1,5 +1,5 @@
 Date,TimeSlot,Available
-2025-12-15,09:00,true
+2025-12-15,09:00,false
 2025-12-15,10:00,true
 2025-12-15,11:30,false
 2025-12-15,13:00,true
@@ -104,3 +104,4 @@ Date,TimeSlot,Available
 2026-01-13,10:00,true
 2026-01-13,13:00,true
 2026-01-13,15:00,true
+
