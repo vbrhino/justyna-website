@@ -23,8 +23,11 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Verify authentication
+        env:
+          INPUT_TOKEN: ${{ github.event.inputs.auth_token }}
+          SECRET_TOKEN: ${{ secrets.ADMIN_AUTH_TOKEN }}
         run: |
-          if [ "${{ github.event.inputs.auth_token }}" != "${{ secrets.ADMIN_AUTH_TOKEN }}" ]; then
+          if [ "$INPUT_TOKEN" != "$SECRET_TOKEN" ]; then
             echo "Authentication failed"
             exit 1
           fi

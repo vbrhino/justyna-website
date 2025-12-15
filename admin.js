@@ -8,6 +8,7 @@ let filterDate = '';
 const GITHUB_OWNER = 'vbrhino';
 const GITHUB_REPO = 'justyna-website';
 const WORKFLOW_FILE = 'update-afspraken.yml';
+const DEFAULT_BRANCH = 'main'; // Change this if your default branch is different (e.g., 'master')
 
 // Authentication
 function authenticate() {
@@ -318,16 +319,20 @@ async function saveChanges() {
         
         const csvData = toCSV(appointmentsData);
         
+        // Note: The auth_token is sent to verify the workflow caller has proper permissions.
+        // While it appears in workflow inputs, the workflow validates it against a secret.
+        // For production use, consider implementing a dedicated backend API for additional security.
+        
         // Trigger GitHub Action workflow
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches`, {
             method: 'POST',
             headers: {
-                'Accept': 'application/vnd.github.v3+json',
+                'Accept': 'application/vnd.github+json',
                 'Authorization': `Bearer ${authToken}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                ref: 'main', // or your default branch
+                ref: DEFAULT_BRANCH,
                 inputs: {
                     csv_data: csvData,
                     auth_token: authToken
