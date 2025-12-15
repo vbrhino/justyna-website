@@ -296,7 +296,8 @@ function openAppointmentModal(id = null, prefilledDate = null) {
         title.textContent = 'Afspraak Bewerken';
         const apt = appointmentsData.find(a => a.id === id);
         if (apt) {
-            // Extract just the start time (before the dash if it exists)
+            // Backwards compatibility: Extract start time from old format (HH:MM-HH:MM) or use new format (HH:MM)
+            // This handles existing appointments that were created before switching to single time field
             const timeSlot = apt.timeSlot.includes('-') ? apt.timeSlot.split('-')[0].trim() : apt.timeSlot.trim();
             document.getElementById('modal-date').value = apt.date;
             document.getElementById('modal-time-start').value = timeSlot;
@@ -429,11 +430,6 @@ function saveNewDay() {
     } else {
         showStatus('Alle tijdslots bestaan al voor deze datum', 'error');
     }
-}
-
-function closeAppointmentModal() {
-    document.getElementById('appointmentModal').style.display = 'none';
-    currentEditingId = null;
 }
 
 function saveAppointmentFromModal() {
