@@ -11,6 +11,9 @@ const GITHUB_REPO = 'justyna-website';
 const WORKFLOW_FILE = 'update-afspraken.yml';
 const DEFAULT_BRANCH = 'main';
 
+// Available time slots for new day appointments
+const AVAILABLE_TIME_SLOTS = ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
+
 // Populate time picker with business hours (8:00 - 20:00) in 30-minute intervals
 function populateTimePickers() {
     const startSelect = document.getElementById('modal-time-start');
@@ -329,12 +332,10 @@ function closeAppointmentModal() {
 
 // Populate time slot dropdown with limited business hours
 function populateTimeSlotDropdown(selectElement) {
-    // Available time slots: 9:00, 10:00, 11:00, 13:00, 14:00, 15:00, 16:00
-    const availableTimes = ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
-    
+    // Use the constant available time slots
     selectElement.innerHTML = '<option value="">Selecteer tijd...</option>';
     
-    availableTimes.forEach(time => {
+    AVAILABLE_TIME_SLOTS.forEach(time => {
         const option = document.createElement('option');
         option.value = time;
         option.textContent = time;
@@ -347,12 +348,9 @@ function openNewDayModal() {
     const modal = document.getElementById('newDayModal');
     const container = document.getElementById('time-slots-container');
     
-    // Default time slots: 9:00, 10:00, 11:00, 13:00, 14:00, 15:00, 16:00
-    const defaultTimes = ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
-    
     // Clear and populate time slots
     container.innerHTML = '';
-    defaultTimes.forEach((time, index) => {
+    AVAILABLE_TIME_SLOTS.forEach((time, index) => {
         const slotDiv = document.createElement('div');
         slotDiv.style.cssText = 'display: flex; align-items: center; gap: 0.5rem;';
         
