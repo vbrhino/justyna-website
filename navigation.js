@@ -1,6 +1,7 @@
 // Mobile navigation scroll behavior
 let lastScrollPosition = 0;
 let scrollThreshold = 50; // Minimum scroll before triggering collapse
+let scrollUpThreshold = 10; // Minimum scroll up before expanding nav
 let isNavCollapsed = false;
 
 function initScrollNavigation() {
@@ -34,7 +35,7 @@ function initScrollNavigation() {
             isNavCollapsed = true;
         }
         // Scrolling up significantly - expand
-        else if (currentScrollPosition < lastScrollPosition - 10 && isNavCollapsed) {
+        else if (currentScrollPosition < lastScrollPosition - scrollUpThreshold && isNavCollapsed) {
             header.classList.remove('collapsed');
             isNavCollapsed = false;
         }
@@ -48,7 +49,7 @@ function initScrollNavigation() {
         if (scrollTimeout) {
             clearTimeout(scrollTimeout);
         }
-        scrollTimeout = setTimeout(handleScroll, 10);
+        scrollTimeout = setTimeout(handleScroll, 16); // ~60fps
     }, { passive: true });
 
     // Handle resize to reset on desktop
