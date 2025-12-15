@@ -9,7 +9,7 @@ let hasUnsavedChanges = false;
 const GITHUB_OWNER = 'vbrhino';
 const GITHUB_REPO = 'justyna-website';
 const WORKFLOW_FILE = 'update-afspraken.yml';
-const DEFAULT_BRANCH = 'main'; // Change this if your default branch is different (e.g., 'master')
+const DEFAULT_BRANCH = 'copilot/manage-afspraken-csv'; // Using the current PR branch since workflow is defined here
 
 // Populate time picker with business hours (8:00 - 20:00) in 30-minute intervals
 function populateTimePickers() {
