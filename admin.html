@@ -53,7 +53,7 @@
                     
                     <!-- Action Buttons -->
                     <div class="action-bar">
-                        <button onclick="addNewAppointment()" class="btn-success">➕ Nieuwe Afspraak Toevoegen</button>
+                        <button onclick="openNewDayModal()" class="btn-success">➕ Nieuwe Dag Toevoegen</button>
                         <button onclick="saveChanges()" class="btn-primary" id="save-btn">💾 Wijzigingen Opslaan</button>
                         <button onclick="cancelChanges()" class="btn-secondary">↩️ Annuleren</button>
                         <button onclick="logout()" class="btn-danger" style="float: right;">🚪 Uitloggen</button>
@@ -103,6 +103,32 @@
                 <div style="margin-top: 1.5rem;">
                     <button onclick="saveAppointmentFromModal()" class="btn-primary">Opslaan</button>
                     <button onclick="closeAppointmentModal()" class="btn-secondary">Annuleren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Day with Multiple Time Slots -->
+    <div id="newDayModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>Nieuwe Dag Toevoegen</h2>
+                <button class="close-modal" onclick="closeNewDayModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="new-day-date">Datum:</label>
+                    <input type="date" id="new-day-date" required>
+                </div>
+                <div class="form-group">
+                    <label>Tijdslots:</label>
+                    <div id="time-slots-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Time slots will be populated here -->
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button onclick="saveNewDay()" class="btn-primary">Dag Toevoegen</button>
+                    <button onclick="closeNewDayModal()" class="btn-secondary">Annuleren</button>
                 </div>
             </div>
         </div>

@@ -316,6 +316,126 @@ function closeAppointmentModal() {
     currentEditingId = null;
 }
 
+// New Day Modal Functions
+function openNewDayModal() {
+    const modal = document.getElementById('newDayModal');
+    const container = document.getElementById('time-slots-container');
+    
+    // Default time slots: 9:00, 10:00, 11:00, 12:00, 13:00, 14:00, 15:00, 16:00
+    const defaultTimes = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
+    
+    // Clear and populate time slots
+    container.innerHTML = '';
+    defaultTimes.forEach((time, index) => {
+        const slotDiv = document.createElement('div');
+        slotDiv.style.cssText = 'display: flex; align-items: center; gap: 0.5rem;';
+        slotDiv.innerHTML = `
+            <input type="time" class="time-slot-input time-select" value="${time}" style="flex: 1;">
+            <button onclick="removeTimeSlot(this)" class="btn-danger" style="padding: 0.5rem; font-size: 0.9rem;" title="Verwijder tijdslot">🗑️</button>
+        `;
+        container.appendChild(slotDiv);
+    });
+    
+    // Add button to add more slots
+    const addButton = document.createElement('button');
+    addButton.onclick = addTimeSlot;
+    addButton.className = 'btn-secondary';
+    addButton.style.cssText = 'margin-top: 0.5rem;';
+    addButton.textContent = '➕ Tijdslot Toevoegen';
+    container.appendChild(addButton);
+    
+    // Clear date field
+    document.getElementById('new-day-date').value = '';
+    
+    modal.style.display = 'block';
+}
+
+function closeNewDayModal() {
+    document.getElementById('newDayModal').style.display = 'none';
+}
+
+function addTimeSlot() {
+    const container = document.getElementById('time-slots-container');
+    const addButton = container.lastChild; // The add button
+    
+    const slotDiv = document.createElement('div');
+    slotDiv.style.cssText = 'display: flex; align-items: center; gap: 0.5rem;';
+    slotDiv.innerHTML = `
+        <input type="time" class="time-slot-input time-select" value="09:00" style="flex: 1;">
+        <button onclick="removeTimeSlot(this)" class="btn-danger" style="padding: 0.5rem; font-size: 0.9rem;" title="Verwijder tijdslot">🗑️</button>
+    `;
+    
+    container.insertBefore(slotDiv, addButton);
+}
+
+function removeTimeSlot(button) {
+    button.parentElement.remove();
+}
+
+function saveNewDay() {
+    const date = document.getElementById('new-day-date').value;
+    const timeInputs = document.querySelectorAll('.time-slot-input');
+    
+    // Validate date
+    if (!date) {
+        showStatus('Selecteer een datum', 'error');
+        return;
+    }
+    
+    // Get all time slots
+    const times = Array.from(timeInputs).map(input => input.value).filter(time => time);
+    
+    if (times.length === 0) {
+        showStatus('Voeg minimaal één tijdslot toe', 'error');
+        return;
+    }
+    
+    // Check for duplicates
+    const uniqueTimes = [...new Set(times)];
+    if (uniqueTimes.length !== times.length) {
+        showStatus('Verwijder dubbele tijdslots', 'error');
+        return;
+    }
+    
+    // Sort times
+    uniqueTimes.sort();
+    
+    // Add all appointments for this day
+    let addedCount = 0;
+    let skippedCount = 0;
+    
+    uniqueTimes.forEach(time => {
+        const newId = `${date}-${time}`;
+        
+        // Check if already exists
+        if (!appointmentsData.find(a => a.id === newId)) {
+            appointmentsData.push({
+                date: date,
+                timeSlot: time,
+                available: true,
+                id: newId
+            });
+            addedCount++;
+        } else {
+            skippedCount++;
+        }
+    });
+    
+    if (addedCount > 0) {
+        markUnsavedChanges();
+        displayAppointments();
+        closeNewDayModal();
+        showStatus(`${addedCount} tijdslot(s) toegevoegd${skippedCount > 0 ? ` (${skippedCount} al bestaand)` : ''}`, 'success');
+    } else {
+        showStatus('Alle tijdslots bestaan al voor deze datum', 'error');
+    }
+}
+
+function closeAppointmentModal() {
+    document.getElementById('appointmentModal').style.display = 'none';
+    currentEditingId = null;
+}
+
 function saveAppointmentFromModal() {
     const date = document.getElementById('modal-date').value;
     const startTime = document.getElementById('modal-time-start').value;
