@@ -71,7 +71,18 @@ async function loadAppointments() {
 // Parse CSV
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n').filter(line => line.trim());
+    
+    if (lines.length === 0) {
+        throw new Error('CSV file is empty');
+    }
+    
     const data = [];
+    
+    // Validate header
+    const header = lines[0].toLowerCase();
+    if (!header.includes('date') || !header.includes('timeslot') || !header.includes('available')) {
+        console.warn('CSV header may not be in expected format. Expected: Date,TimeSlot,Available');
+    }
     
     // Skip header line
     for (let i = 1; i < lines.length; i++) {
@@ -195,82 +206,93 @@ function toggleAvailability(id) {
     }
 }
 
-// Add new appointment
-function addNewAppointment() {
-    const date = prompt('Datum (YYYY-MM-DD):');
-    if (!date) return;
+// Modal management
+let currentEditingId = null;
+
+function openAppointmentModal(id = null) {
+    const modal = document.getElementById('appointmentModal');
+    const title = document.getElementById('modalTitle');
     
-    // Validate date format
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-        alert('Ongeldige datum formaat. Gebruik YYYY-MM-DD');
+    currentEditingId = id;
+    
+    if (id) {
+        // Edit mode
+        title.textContent = 'Afspraak Bewerken';
+        const apt = appointmentsData.find(a => a.id === id);
+        if (apt) {
+            const [startTime, endTime] = apt.timeSlot.split('-');
+            document.getElementById('modal-date').value = apt.date;
+            document.getElementById('modal-time-start').value = startTime.trim();
+            document.getElementById('modal-time-end').value = endTime.trim();
+        }
+    } else {
+        // Add mode
+        title.textContent = 'Afspraak Toevoegen';
+        document.getElementById('modal-date').value = '';
+        document.getElementById('modal-time-start').value = '';
+        document.getElementById('modal-time-end').value = '';
+    }
+    
+    modal.style.display = 'block';
+}
+
+function closeAppointmentModal() {
+    document.getElementById('appointmentModal').style.display = 'none';
+    currentEditingId = null;
+}
+
+function saveAppointmentFromModal() {
+    const date = document.getElementById('modal-date').value;
+    const startTime = document.getElementById('modal-time-start').value;
+    const endTime = document.getElementById('modal-time-end').value;
+    
+    // Validate inputs
+    if (!date || !startTime || !endTime) {
+        alert('Vul alle velden in');
         return;
     }
     
-    const timeSlot = prompt('Tijdslot (HH:MM-HH:MM, bijv. 09:00-10:30):');
-    if (!timeSlot) return;
+    const timeSlot = `${startTime}-${endTime}`;
+    const newId = `${date}-${timeSlot}`;
     
-    // Validate time slot format
-    if (!/^\d{2}:\d{2}-\d{2}:\d{2}$/.test(timeSlot)) {
-        alert('Ongeldig tijdslot formaat. Gebruik HH:MM-HH:MM');
-        return;
-    }
-    
-    const id = `${date}-${timeSlot}`;
-    
-    // Check if already exists
-    if (appointmentsData.find(a => a.id === id)) {
+    // Check if already exists (and it's not the current editing appointment)
+    if (newId !== currentEditingId && appointmentsData.find(a => a.id === newId)) {
         alert('Deze afspraak bestaat al!');
         return;
     }
     
-    // Add new appointment
-    appointmentsData.push({
-        date: date,
-        timeSlot: timeSlot,
-        available: true,
-        id: id
-    });
+    if (currentEditingId) {
+        // Edit existing
+        const apt = appointmentsData.find(a => a.id === currentEditingId);
+        if (apt) {
+            apt.date = date;
+            apt.timeSlot = timeSlot;
+            apt.id = newId;
+        }
+        showStatus('Afspraak bijgewerkt. Vergeet niet te opslaan!', 'success');
+    } else {
+        // Add new
+        appointmentsData.push({
+            date: date,
+            timeSlot: timeSlot,
+            available: true,
+            id: newId
+        });
+        showStatus('Nieuwe afspraak toegevoegd. Vergeet niet te opslaan!', 'success');
+    }
     
     displayAppointments();
-    showStatus('Nieuwe afspraak toegevoegd. Vergeet niet te opslaan!', 'success');
+    closeAppointmentModal();
+}
+
+// Add new appointment
+function addNewAppointment() {
+    openAppointmentModal();
 }
 
 // Edit appointment
 function editAppointment(id) {
-    const apt = appointmentsData.find(a => a.id === id);
-    if (!apt) return;
-    
-    const newDate = prompt('Datum (YYYY-MM-DD):', apt.date);
-    if (!newDate) return;
-    
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(newDate)) {
-        alert('Ongeldige datum formaat. Gebruik YYYY-MM-DD');
-        return;
-    }
-    
-    const newTimeSlot = prompt('Tijdslot (HH:MM-HH:MM):', apt.timeSlot);
-    if (!newTimeSlot) return;
-    
-    if (!/^\d{2}:\d{2}-\d{2}:\d{2}$/.test(newTimeSlot)) {
-        alert('Ongeldig tijdslot formaat. Gebruik HH:MM-HH:MM');
-        return;
-    }
-    
-    const newId = `${newDate}-${newTimeSlot}`;
-    
-    // Check if new ID conflicts with another appointment
-    if (newId !== id && appointmentsData.find(a => a.id === newId)) {
-        alert('Een afspraak met deze datum en tijd bestaat al!');
-        return;
-    }
-    
-    // Update appointment
-    apt.date = newDate;
-    apt.timeSlot = newTimeSlot;
-    apt.id = newId;
-    
-    displayAppointments();
-    showStatus('Afspraak bijgewerkt. Vergeet niet te opslaan!', 'success');
+    openAppointmentModal(id);
 }
 
 // Delete appointment
@@ -392,4 +414,12 @@ function hideStatus() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     checkAuth();
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('appointmentModal');
+        if (event.target === modal) {
+            closeAppointmentModal();
+        }
+    };
 });
