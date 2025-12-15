@@ -14,11 +14,9 @@ const DEFAULT_BRANCH = 'main'; // Change this if your default branch is differen
 // Populate time picker with business hours (8:00 - 20:00) in 30-minute intervals
 function populateTimePickers() {
     const startSelect = document.getElementById('modal-time-start');
-    const endSelect = document.getElementById('modal-time-end');
     
     // Clear existing options except the first one
     startSelect.innerHTML = '<option value="">Selecteer tijd...</option>';
-    endSelect.innerHTML = '<option value="">Selecteer tijd...</option>';
     
     // Generate times from 08:00 to 20:00 in 30-minute intervals
     for (let hour = 8; hour <= 20; hour++) {
@@ -32,11 +30,6 @@ function populateTimePickers() {
             startOption.value = timeStr;
             startOption.textContent = timeStr;
             startSelect.appendChild(startOption);
-            
-            const endOption = document.createElement('option');
-            endOption.value = timeStr;
-            endOption.textContent = timeStr;
-            endSelect.appendChild(endOption);
         }
     }
 }
@@ -303,17 +296,16 @@ function openAppointmentModal(id = null, prefilledDate = null) {
         title.textContent = 'Afspraak Bewerken';
         const apt = appointmentsData.find(a => a.id === id);
         if (apt) {
-            const [startTime, endTime] = apt.timeSlot.split('-');
+            // Extract just the start time (before the dash if it exists)
+            const timeSlot = apt.timeSlot.includes('-') ? apt.timeSlot.split('-')[0].trim() : apt.timeSlot.trim();
             document.getElementById('modal-date').value = apt.date;
-            document.getElementById('modal-time-start').value = startTime.trim();
-            document.getElementById('modal-time-end').value = endTime.trim();
+            document.getElementById('modal-time-start').value = timeSlot;
         }
     } else {
         // Add mode
         title.textContent = 'Afspraak Toevoegen';
         document.getElementById('modal-date').value = prefilledDate || '';
         document.getElementById('modal-time-start').value = '';
-        document.getElementById('modal-time-end').value = '';
     }
     
     modal.style.display = 'block';
@@ -327,15 +319,14 @@ function closeAppointmentModal() {
 function saveAppointmentFromModal() {
     const date = document.getElementById('modal-date').value;
     const startTime = document.getElementById('modal-time-start').value;
-    const endTime = document.getElementById('modal-time-end').value;
     
     // Validate inputs
-    if (!date || !startTime || !endTime) {
+    if (!date || !startTime) {
         showStatus('Vul alle velden in', 'error');
         return;
     }
     
-    const timeSlot = `${startTime}-${endTime}`;
+    const timeSlot = startTime; // Just use the start time
     const newId = `${date}-${timeSlot}`;
     
     // Check if already exists (and it's not the current editing appointment)
