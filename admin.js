@@ -3,12 +3,39 @@ let appointmentsData = [];
 let originalData = [];
 let authToken = '';
 let filterDate = '';
+let hasUnsavedChanges = false;
 
 // GitHub repository details
 const GITHUB_OWNER = 'vbrhino';
 const GITHUB_REPO = 'justyna-website';
 const WORKFLOW_FILE = 'update-afspraken.yml';
 const DEFAULT_BRANCH = 'main'; // Change this if your default branch is different (e.g., 'master')
+
+// Mark that there are unsaved changes
+function markUnsavedChanges() {
+    hasUnsavedChanges = true;
+    const warning = document.getElementById('pending-changes-warning');
+    const saveBtn = document.getElementById('save-btn');
+    if (warning) {
+        warning.style.display = 'block';
+    }
+    if (saveBtn) {
+        saveBtn.classList.add('btn-pulse');
+    }
+}
+
+// Clear unsaved changes flag
+function clearUnsavedChanges() {
+    hasUnsavedChanges = false;
+    const warning = document.getElementById('pending-changes-warning');
+    const saveBtn = document.getElementById('save-btn');
+    if (warning) {
+        warning.style.display = 'none';
+    }
+    if (saveBtn) {
+        saveBtn.classList.remove('btn-pulse');
+    }
+}
 
 // Authentication
 function authenticate() {
@@ -146,34 +173,51 @@ function displayAppointments() {
         grouped[apt.date].push(apt);
     });
     
-    // Create HTML
-    let html = '<div class="appointments-grid">';
+    // Create HTML with row-based layout
+    let html = '<div class="appointments-list">';
     
     Object.keys(grouped).sort().forEach(date => {
+        // Day header
+        html += `
+            <div class="day-header">
+                <span class="day-date">📅 ${formatDate(date)}</span>
+                <span class="day-full-date">${date}</span>
+            </div>
+        `;
+        
+        // Sort appointments for this day
+        grouped[date].sort((a, b) => a.timeSlot.localeCompare(b.timeSlot));
+        
         grouped[date].forEach(apt => {
             const isAvailable = apt.available;
             const availabilityClass = isAvailable ? 'available' : 'booked';
+            const availabilityIcon = isAvailable ? '✓' : '✗';
             const availabilityLabel = isAvailable ? 'Beschikbaar' : 'Bezet';
             
             html += `
-                <div class="appointment-card ${availabilityClass}" data-id="${apt.id}">
-                    <div class="appointment-header">
-                        <div>
-                            <div class="appointment-date">📅 ${formatDate(apt.date)}</div>
-                            <div class="appointment-time">🕐 ${apt.timeSlot}</div>
+                <div class="appointment-row ${availabilityClass}" data-id="${apt.id}" data-date="${apt.date}">
+                    <div class="row-add-icon" onclick="addAppointmentForDate('${apt.date}')" title="Voeg afspraak toe voor ${formatDate(date)}">
+                        <span class="add-icon">➕</span>
+                    </div>
+                    <div class="row-content">
+                        <div class="row-time">🕐 ${apt.timeSlot}</div>
+                        <div class="row-status">
+                            <span class="status-badge ${availabilityClass}">
+                                <span class="status-icon">${availabilityIcon}</span>
+                                <span class="status-text">${availabilityLabel}</span>
+                            </span>
                         </div>
-                    </div>
-                    <div class="availability-toggle">
-                        <label class="toggle-switch">
-                            <input type="checkbox" ${isAvailable ? 'checked' : ''} 
-                                   onchange="toggleAvailability('${apt.id}')">
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <span class="availability-label ${availabilityClass}">${availabilityLabel}</span>
-                    </div>
-                    <div class="card-actions">
-                        <button onclick="editAppointment('${apt.id}')" class="btn-warning btn-small">✏️ Bewerken</button>
-                        <button onclick="deleteAppointment('${apt.id}')" class="btn-danger btn-small">🗑️ Verwijderen</button>
+                        <div class="row-actions">
+                            <button onclick="toggleAvailability('${apt.id}')" class="icon-btn" title="Beschikbaarheid wijzigen">
+                                <span class="toggle-icon">${isAvailable ? '🔄' : '🔄'}</span>
+                            </button>
+                            <button onclick="editAppointment('${apt.id}')" class="icon-btn" title="Bewerken">
+                                ✏️
+                            </button>
+                            <button onclick="deleteAppointment('${apt.id}')" class="icon-btn icon-btn-danger" title="Verwijderen">
+                                🗑️
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -202,14 +246,20 @@ function toggleAvailability(id) {
     const apt = appointmentsData.find(a => a.id === id);
     if (apt) {
         apt.available = !apt.available;
+        markUnsavedChanges();
         displayAppointments();
     }
+}
+
+// Add appointment for specific date (from hover + icon)
+function addAppointmentForDate(date) {
+    openAppointmentModal(null, date);
 }
 
 // Modal management
 let currentEditingId = null;
 
-function openAppointmentModal(id = null) {
+function openAppointmentModal(id = null, prefilledDate = null) {
     const modal = document.getElementById('appointmentModal');
     const title = document.getElementById('modalTitle');
     
@@ -228,7 +278,7 @@ function openAppointmentModal(id = null) {
     } else {
         // Add mode
         title.textContent = 'Afspraak Toevoegen';
-        document.getElementById('modal-date').value = '';
+        document.getElementById('modal-date').value = prefilledDate || '';
         document.getElementById('modal-time-start').value = '';
         document.getElementById('modal-time-end').value = '';
     }
@@ -248,7 +298,7 @@ function saveAppointmentFromModal() {
     
     // Validate inputs
     if (!date || !startTime || !endTime) {
-        alert('Vul alle velden in');
+        showStatus('Vul alle velden in', 'error');
         return;
     }
     
@@ -257,7 +307,7 @@ function saveAppointmentFromModal() {
     
     // Check if already exists (and it's not the current editing appointment)
     if (newId !== currentEditingId && appointmentsData.find(a => a.id === newId)) {
-        alert('Deze afspraak bestaat al!');
+        showStatus('Deze afspraak bestaat al!', 'error');
         return;
     }
     
@@ -269,7 +319,7 @@ function saveAppointmentFromModal() {
             apt.timeSlot = timeSlot;
             apt.id = newId;
         }
-        showStatus('Afspraak bijgewerkt. Vergeet niet te opslaan!', 'success');
+        showStatus('Afspraak bijgewerkt.', 'success');
     } else {
         // Add new
         appointmentsData.push({
@@ -278,9 +328,10 @@ function saveAppointmentFromModal() {
             available: true,
             id: newId
         });
-        showStatus('Nieuwe afspraak toegevoegd. Vergeet niet te opslaan!', 'success');
+        showStatus('Nieuwe afspraak toegevoegd.', 'success');
     }
     
+    markUnsavedChanges();
     displayAppointments();
     closeAppointmentModal();
 }
@@ -302,8 +353,9 @@ function deleteAppointment(id) {
     }
     
     appointmentsData = appointmentsData.filter(a => a.id !== id);
+    markUnsavedChanges();
     displayAppointments();
-    showStatus('Afspraak verwijderd. Vergeet niet te opslaan!', 'success');
+    showStatus('Afspraak verwijderd.', 'success');
 }
 
 // Filter appointments
@@ -369,6 +421,7 @@ async function saveChanges() {
         
         showStatus('✅ Wijzigingen succesvol opgeslagen! De GitHub Action is gestart.', 'success');
         originalData = JSON.parse(JSON.stringify(appointmentsData));
+        clearUnsavedChanges();
         
         // Reload after a delay to see changes
         setTimeout(() => {
@@ -394,6 +447,7 @@ function cancelChanges() {
     }
     
     appointmentsData = JSON.parse(JSON.stringify(originalData));
+    clearUnsavedChanges();
     displayAppointments();
     showStatus('Wijzigingen geannuleerd.', 'info');
 }

@@ -54,19 +54,14 @@
                     <!-- Action Buttons -->
                     <div class="action-bar">
                         <button onclick="addNewAppointment()" class="btn-success">➕ Nieuwe Afspraak Toevoegen</button>
-                        <button onclick="saveChanges()" class="btn-primary">💾 Wijzigingen Opslaan</button>
+                        <button onclick="saveChanges()" class="btn-primary" id="save-btn">💾 Wijzigingen Opslaan</button>
                         <button onclick="cancelChanges()" class="btn-secondary">↩️ Annuleren</button>
                         <button onclick="logout()" class="btn-danger" style="float: right;">🚪 Uitloggen</button>
                     </div>
 
-                    <div class="info-box">
-                        <h3>ℹ️ Instructies</h3>
-                        <ul>
-                            <li>Klik op een tijdslot om de beschikbaarheid aan te passen</li>
-                            <li>Gebruik "Nieuwe Afspraak Toevoegen" om een nieuw tijdslot te maken</li>
-                            <li>Klik op "Verwijderen" om een tijdslot te verwijderen</li>
-                            <li>Vergeet niet te klikken op "Wijzigingen Opslaan" om de updates toe te passen</li>
-                        </ul>
+                    <!-- Pending Changes Warning -->
+                    <div id="pending-changes-warning" class="warning-box" style="display: none;">
+                        ⚠️ <strong>Let op:</strong> U heeft niet-opgeslagen wijzigingen. Klik op "Wijzigingen Opslaan" om uw data te bewaren.
                     </div>
 
                     <!-- Status Messages -->
