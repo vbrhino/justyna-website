@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Panel - Beheer Afspraken">
+    <title>Admin - Afspraken Beheren</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body data-page="admin">
+    <header>
+        <nav>
+            <div class="container">
+                <div class="nav-left">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo.jfif" alt="Be Beauty JS">
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="afspraken.html">Afspraken Bekijken</a></li>
+                    <li><a href="admin.html" class="active">Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <h1>🔐 Afspraken Beheren</h1>
+                
+                <!-- Authentication Section -->
+                <div id="auth-section" class="auth-section">
+                    <div class="auth-box">
+                        <h2>Authenticatie Vereist</h2>
+                        <p>Voer uw authenticatie token in om toegang te krijgen tot het admin panel.</p>
+                        <div class="form-group">
+                            <label for="auth-token">Authenticatie Token:</label>
+                            <input type="password" id="auth-token" placeholder="Voer token in">
+                        </div>
+                        <button onclick="authenticate()" class="btn-primary">Login</button>
+                        <div id="auth-error" class="error-message"></div>
+                    </div>
+                </div>
+
+                <!-- Admin Panel (hidden until authenticated) -->
+                <div id="admin-panel" class="admin-panel" style="display: none;">
+                    
+                    <!-- Action Buttons -->
+                    <div class="action-bar">
+                        <button onclick="openNewDayModal()" class="btn-success">➕ Nieuwe Dag Toevoegen</button>
+                        <button onclick="saveChanges()" class="btn-primary" id="save-btn">💾 Wijzigingen Opslaan</button>
+                        <button onclick="cancelChanges()" class="btn-secondary">↩️ Annuleren</button>
+                        <button onclick="logout()" class="btn-danger" style="float: right;">🚪 Uitloggen</button>
+                    </div>
+
+                    <!-- Pending Changes Warning -->
+                    <div id="pending-changes-warning" class="warning-box" style="display: none;">
+                        ⚠️ <strong>Let op:</strong> U heeft niet-opgeslagen wijzigingen. Klik op "Wijzigingen Opslaan" om uw data te bewaren.
+                    </div>
+
+                    <!-- Status Messages -->
+                    <div id="status-message" class="status-message"></div>
+
+                    <!-- Appointments Table -->
+                    <div class="table-container">
+                        <h2>📅 Afspraken Overzicht</h2>
+                        <div class="filter-bar">
+                            <label for="filter-date">Filter op datum:</label>
+                            <input type="date" id="filter-date" onchange="filterAppointments()">
+                            <button onclick="clearFilter()" class="btn-secondary">Wis Filter</button>
+                        </div>
+                        <div id="appointments-table"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Add/Edit Appointment -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Afspraak Toevoegen</h2>
+                <button class="close-modal" onclick="closeAppointmentModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modal-date">Datum:</label>
+                    <input type="date" id="modal-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-time-start">Tijd:</label>
+                    <select id="modal-time-start" class="time-select" required>
+                        <option value="">Selecteer tijd...</option>
+                    </select>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button onclick="saveAppointmentFromModal()" class="btn-primary">Opslaan</button>
+                    <button onclick="closeAppointmentModal()" class="btn-secondary">Annuleren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding New Day with Multiple Time Slots -->
+    <div id="newDayModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>Nieuwe Dag Toevoegen</h2>
+                <button class="close-modal" onclick="closeNewDayModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="new-day-date">Datum:</label>
+                    <input type="date" id="new-day-date" required>
+                </div>
+                <div class="form-group">
+                    <label>Tijdslots:</label>
+                    <div id="time-slots-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Time slots will be populated here -->
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button onclick="saveNewDay()" class="btn-primary">Dag Toevoegen</button>
+                    <button onclick="closeNewDayModal()" class="btn-secondary">Annuleren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; <span id="year"></span> Be Beauty JS. Alle rechten voorbehouden</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script src="admin.js"></script>
+</body>
+</html>

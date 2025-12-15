@@ -9,6 +9,7 @@ Een moderne, meertalige website voor Be Beauty schoonheidssalon met dynamische p
 - 💰 **Dynamische Prijslijst** - Prijzen worden geladen vanuit CSV bestanden
 - 📥 **Downloadbare Prijslijst** - Klanten kunnen de prijslijst downloaden als PDF
 - 📅 **Afsprakenkalender** - Toon beschikbare afspraken voor de komende 30 dagen (CSV-beheerd)
+- 🔐 **Admin UI** - Gebruiksvriendelijke interface om afspraken te beheren via GitHub Actions
 - 🎨 **Modern CSS** - Gebruikt CSS Grid, Flexbox en CSS Variabelen
 - 🚀 **Snel & Lichtgewicht** - Geen frameworks of dependencies
 - ♿ **Toegankelijk** - Semantische HTML5 markup
@@ -28,20 +29,27 @@ Be Beauty biedt professionele schoonheidsbehandelingen:
 
 ```
 justyna-website/
-├── index.html              # Homepagina
-├── about.html              # Over Ons pagina
-├── prijzen.html            # Prijslijst pagina
-├── contact.html            # Contact pagina met formulier en afsprakenkalender
-├── styles.css              # Hoofd stylesheet
-├── translations.js         # Meertalige vertalingen
-├── prijslijst.js          # Prijslijst functionaliteit
-├── calendar.js            # Afsprakenkalender functionaliteit
-├── prijslijst-nl.csv      # Nederlandse prijzen
-├── prijslijst-en.csv      # Engelse prijzen
-├── prijslijst-pl.csv      # Poolse prijzen
-├── afspraken.csv          # Beschikbare afspraken (kalender)
-├── .gitignore             # Git ignore bestand
-└── README.md              # Dit bestand
+├── index.html                        # Homepagina
+├── about.html                        # Over Ons pagina
+├── prijzen.html                      # Prijslijst pagina
+├── contact.html                      # Contact pagina met formulier en afsprakenkalender
+├── afspraken.html                    # Afspraken kalender pagina
+├── admin.html                        # Admin UI voor afspraken beheer
+├── styles.css                        # Hoofd stylesheet
+├── admin-styles.css                  # Admin UI stylesheet
+├── translations.js                   # Meertalige vertalingen
+├── prijslijst.js                     # Prijslijst functionaliteit
+├── calendar.js                       # Afsprakenkalender functionaliteit
+├── admin.js                          # Admin UI functionaliteit
+├── prijslijst-nl.csv                 # Nederlandse prijzen
+├── prijslijst-en.csv                 # Engelse prijzen
+├── prijslijst-pl.csv                 # Poolse prijzen
+├── afspraken.csv                     # Beschikbare afspraken (kalender)
+├── .github/workflows/                # GitHub Actions workflows
+│   └── update-afspraken.yml          # Workflow om afspraken.csv te updaten
+├── .gitignore                        # Git ignore bestand
+├── README.md                         # Dit bestand
+└── ADMIN_README.md                   # Admin UI setup & gebruiksinstructies
 ```
 
 ## Aan de Slag
@@ -99,7 +107,26 @@ De prijslijst wordt dynamisch geladen vanuit CSV bestanden. Om prijzen te update
 
 ## Afspraken Beheren
 
-De beschikbare afspraken worden weergegeven in een kalender op de contact pagina. Om afspraken te updaten:
+### 🎨 Admin UI (Aanbevolen)
+
+De eenvoudigste manier om afspraken te beheren is via de **Admin UI**:
+
+1. Ga naar `admin.html` op je website
+2. Log in met je GitHub Personal Access Token
+3. Gebruik de gebruiksvriendelijke interface om:
+   - ✅ Afspraken te bekijken in een overzichtelijke kaartweergave
+   - ➕ Nieuwe afspraken toe te voegen
+   - ✏️ Bestaande afspraken te bewerken
+   - 🗑️ Afspraken te verwijderen
+   - 🔄 Beschikbaarheid aan/uit te zetten met een toggle
+   - 📅 Afspraken te filteren op datum
+4. Klik op "Wijzigingen Opslaan" om de updates toe te passen
+
+**Zie [ADMIN_README.md](ADMIN_README.md) voor volledige setup instructies.**
+
+### 📝 Handmatig Beheren (Alternatief)
+
+Je kunt ook handmatig het CSV bestand bewerken:
 
 1. Open `afspraken.csv` in de GitHub repo
 
