@@ -196,7 +196,7 @@ function displayAppointments() {
             
             html += `
                 <div class="appointment-row ${availabilityClass}" data-id="${apt.id}" data-date="${apt.date}">
-                    <div class="row-add-icon" onclick="addAppointmentForDate('${apt.date}')" title="Voeg afspraak toe voor ${formatDate(date)}">
+                    <div class="row-add-icon" onclick="addAppointmentForDate('${apt.date}')" title="Voeg afspraak toe voor ${formatDate(apt.date)}">
                         <span class="add-icon">➕</span>
                     </div>
                     <div class="row-content">
@@ -209,7 +209,7 @@ function displayAppointments() {
                         </div>
                         <div class="row-actions">
                             <button onclick="toggleAvailability('${apt.id}')" class="icon-btn" title="Beschikbaarheid wijzigen">
-                                <span class="toggle-icon">${isAvailable ? '🔄' : '🔄'}</span>
+                                <span class="toggle-icon">${isAvailable ? '🔓' : '🔒'}</span>
                             </button>
                             <button onclick="editAppointment('${apt.id}')" class="icon-btn" title="Bewerken">
                                 ✏️
